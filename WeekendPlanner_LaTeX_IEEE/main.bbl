@@ -1,0 +1,76 @@
+\begin{thebibliography}{}
+
+\bibitem [\protect \citeauthoryear {%
+John G.~Proakis%
+}{%
+John G.~Proakis%
+}{%
+{\protect \APACyear {2014}}%
+}]{%
+fundcomm}
+\APACinsertmetastar {%
+fundcomm}%
+\begin{APACrefauthors}%
+John G.~Proakis, M\BPBI S.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYear{2014}.
+\newblock
+\APACrefbtitle {Fundamentals of Communications Systems} {Fundamentals of
+  communications systems}.
+\newblock
+\APACaddressPublisher{Upper Saddle River, NJ, USA}{Prentice Hall}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Michelson%
+\ \BBA {} Morley%
+}{%
+Michelson%
+\ \BBA {} Morley%
+}{%
+{\protect \APACyear {1887}}%
+}]{%
+michelson}
+\APACinsertmetastar {%
+michelson}%
+\begin{APACrefauthors}%
+Michelson, A\BPBI A.%
+\BCBT {}\ \BBA {} Morley, E\BPBI W.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{1887}{}{}.
+\newblock
+{\BBOQ}\APACrefatitle {On the Relative Motion of the Earth and the Luminiferous
+  Ether} {On the relative motion of the earth and the luminiferous
+  ether}.{\BBCQ}
+\newblock
+\APACjournalVolNumPages{American Journal of Science}{34}{}{333--345}.
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+Various%
+}{%
+Various%
+}{%
+{\protect \APACyear {2017}}%
+}]{%
+GOD}
+\APACinsertmetastar {%
+GOD}%
+\begin{APACrefauthors}%
+Various.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2017}{}{}.
+\newblock
+\APACrefbtitle {Monadology.} {Monadology.}
+\newblock
+\begin{APACrefURL} \url{https://en.wikipedia.org/wiki/Monadology}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\end{thebibliography}

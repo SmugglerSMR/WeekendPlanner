@@ -1,0 +1,12 @@
+% $: git update-index --assume-unchanged main.log main.pdf main.synctex.gz main.out
+% of just delete those files
+% $: rm main.log main.pdf main.synctex.gz main.out
+% In case if index still exist. Added following line, listing all files.
+images/
+main.log
+main.pdf
+main.synctex.gz
+main.out
+main.aux
+.grive
+.grive_state

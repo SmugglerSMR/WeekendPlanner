@@ -8,6 +8,7 @@ build-essential \
 curl \
 dialog \
 git \
+mc \
 net-tools \
 python \
 python-dev \
@@ -17,6 +18,7 @@ python-pip \
 python-numpy \
 python-scipy \
 tar \
+vim \
 wget
 # pip installation
 RUN pip install flask

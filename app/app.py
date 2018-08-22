@@ -37,13 +37,14 @@ def count_words():
         size = str(int(15 + fdist[word] / float(highCount) * 150))
     colour = str(hex(int(0.8 * fdist[word]/float(highCount) * 256**3)))
     colour = colour[-(len(colour) - 2):]
+    
     while len(colour) < 6:
 	    colour = "0" + colour
     html = html + "<span style=\"font-size: " + size + \
 	              "px; color: #" + colour + "\">" + \
 		      word + "</span> "
-
-    html = html + "</body>" + "</html>"
+    
+    html = html + "</body>" + "</html>"    
     return html 
 
 if __name__ == "__main__":

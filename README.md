@@ -31,23 +31,24 @@ https://docs.docker.com/docker-for-mac/
 ## Deployment
 With DocvkerFile in folder run following command to build image.
 ```
-docker build -t weekendsPl .
+docker build -t weekends-pl .
 ```
 Next, run docker in order to acess it.
 Flags specify certain parameters: -p Port iner&outer. -d run as damonise.
 ```
-docker run --name Assignment1 -p 8000:80 -i -d -t weekendsPl
+docker run --name Assignment1 -p 8000:80 -i -d -t weekends-pl
 ```
 After just move to localhost:8000 to see folder.
 
 Following command will upload image to DockerHub
 ```
-docker tag **tag** smugglersmr/weekendsPl:latest
+docker tag 64202 smugglersmr/weekends-pl:latest
+docker push smugglersmr/weekends-pl
 ```
 
 Similar way to run in from DuckerHub strigh Forward.
 ```
-docker run --name Assignment1 -p 8000:80 -i -d -t smugglersmr/weekendsPl
+docker run --name Assignment1 -p 8000:80 -i -d -t smugglersmr/weekends-pl
 ```
 
 Remaining work in progrss...

@@ -130,7 +130,7 @@
 \begin{document}
 \maketitle
 \newpage
-\tableofcontents
+%\tableofcontents
 \newpage
 %===================================================%
 %													%
@@ -138,68 +138,85 @@
 %												    %
 %===================================================%
 \section{Introduction}	
-	\begin{quote}
-		quoted text
-	\end{quote}\label{ref:100}
+%	\begin{enumerate}
+%		\item Overall mashup purpose and description (1-2 Paragraphs)
+%		\item List of service and data APIs to be utilised. Short description of API (1 paragraph)
+%	\end{enumerate} 
 
-	\begin{enumerate}
-		\item Overall mashup purpose and description (1-2 Paragraphs)
-		\item List of service and data APIs to be utilised. Short description of API (1 paragraph)
-	\end{enumerate} 
+	The aim of this project to provide users with some comfortable environment to plan their journeys. This planner will use one of the following API\footnote{TO BE CONFIRMED Later during project work}: 
+	
+	\begin{itemize}
+		\item Google Maps, Yandex Maps, Leaflead*
+		\item Expedian*, Skyscanner**
+		\item Webcam
+	\end{itemize}
+	
+	A user will be able to choose a destination, view closes and cheapest flight information and makes a decision based on a picture from realtime webcameras (Maybe it is not as pretty, but it will give right feeling regarding destination). First and the important part is an interactive map, provided by Maps services. It will allow a user to change view between satellite and geographic, zoom in to view details and help to extract geographic locations. Next is the webcam, which produces some images or short video streams on some of the sights of the area. And the Main part is quick information on the closest flight regarding price, time and journey. The first experiment version is presented in Figure~\ref{fig:map}.
+	
+
+	
 
 	\subsection{World Map}
-		\textcolor{blue}{blue colored text}\\
-		\textcolor{red}{red colored text}
-	
-		\begin{lstlisting}
-			function freq_tbl = wsTabulation(text_in)	
-			end
-		\end{lstlisting}
-		\footnote{Footnote.}
+%		\textcolor{blue}{blue colored text}\\
+%		\textcolor{red}{red colored text}\\		
+%		Googlew MAps. Yeandex. \\
+		$ https://developers.google.com/maps/documentation/ $ \\
+		$ https://tech.yandex.com/hubs/mapsmodules/ $ \\
 		
-		\begin{itemize}
-			\item[] item1
-			\item[] item2
-		\end{itemize}
+		The foundation for weekend planer environment is continental Map. Gladly, there is a high chance of finding a right Map provider. Two global websites, whose work offers an API for use cases are Google Maps and Yandex. If first is the global giant, who existed in the worldwide market for a while, second has the most popularity in Russian. Both of them will serve the primary purpose very well: establish a right environment for integrating other API. \\
+		Besides, both services provide an excellent API to extend the scope of the current project. \\
 	
-		\subsubsection{Google Maps}
-			\begin{figure}[H]
-				\centering
-				\caption{Tough choice!}
-				\includegraphics[width=0.6\textwidth]{images/UQ}
-			\end{figure}		
-			$$E[a_i] = \sum\limits_{i=1}^{20} p(a_i)L_i \  \textcolor{blue}{\approx 4.0958 \textsl{ bits per symbol}}$$ where $L_i$ is the bit-length of the binary code-word for symbol $a_i$.
-
-			$\rightarrow$ 0, b $\rightarrow$ 01, c $\rightarrow$ 011.\hspace{1cm} $\leftarrow$ \underline{Uniquely decodeable (but not instantaneous).} \\ \\
-		\subsubsection{Map Quest}
+%		\subsubsection{Google Maps}
+%			\begin{figure}[H]
+%				\centering
+%				\caption{Tough choice!}
+%				\includegraphics[width=0.6\textwidth]{images/UQ}
+%			\end{figure}		
+%			$$E[a_i] = \sum\limits_{i=1}^{20} p(a_i)L_i \  \textcolor{blue}{\approx 4.0958 \textsl{ bits per symbol}}$$ where $L_i$ is the bit-length of the binary code-word for symbol $a_i$.
+%
+%			$\rightarrow$ 0, b $\rightarrow$ 01, c $\rightarrow$ 011.\hspace{1cm} $\leftarrow$ \underline{Uniquely decodeable (but not instantaneous).} \\ \\
+%		\subsubsection{Map Quest}
+%			Flyght stats.
 	\subsection{Flight Management}
-		\subsubsection{Expedia}
-	\subsection{Location Explorer}
-		\subsubsection{WebCam}
+		$ https://hackathon.expedia.com/docs/public/api/Flights Overview/ $ \\
+		$ https://partners.skyscanner.net/affiliates/travel-apis/ $ \\
+		$ https://developer.ean.com/getting-started/getting-started-with-rapid/ $ \\
 		
+		To gather information about the possible flight tickets, there is a possibility of particular problems. Since the beginning of the project, the request for API keys may take longer than expected. Such services like Expedia provides some flight information, which may be used to gather closest flight information about time, prices, airports. Obtaining this information may become a trickier process. For example, if there will be no alternatives discovered, the best solution in this situation will be parsing web page with flight information. However, this approach goes beyond the scope of the assignment, it may prove itself as a good, but not easy, alternative.\\
+%		\subsubsection{Expedia}
+%			Expedia, yandex - waiting.
+	\subsection{Location Explorer}
+		$ https://developers.webcams.travel/\#webcams/list $ \\
+		
+		To gather information unusually and present in on top of maps webcam service will be used. Generally, it contains Library of open web cameras located around the world. Instead of gathering all possible sources, webcam includes all of them in one place. It will allow extracting at least images, which were made very recent to a user request. An example of how data can be collected is displayed in Figure~\ref{fig:webcam}.
 %===================================================%
 %													%
 %============ Section 2 Use Cases ==================%
 %												    %
 %===================================================%
-\newpage
 \section{Use Cases}
 	\subsection{Trip Planner}
-	with several destinations and cost
-	\begin{wrapfigure}[20]{r}{0.5\textwidth}
-		\centering
-		\includegraphics[width = 0.5\textwidth,]{images/image1.png}
-		\caption{Constellation diagram for BPSK modulation scheme}
-		\label{fig:BPSK_diagram}
-	\end{wrapfigure}
+	The main expected advantage of this service is to \textbf{plan trips to several places} on one Map, instead of planning on the official website, comparing each ticket one by one. This comparison gives user possibility select option which is not only cheaper but also is flexible regarding destinations.
+	
 	\subsection{Exploring area with cameras}
-	\begin{align*}
-		S_i(t) &= A \ cos(2\pi f_ct + \phi (t)) \\
-		S_1(t) &= A \ cos(2\pi f_ct) \\ 
-		S_2(t) &= A \ cos (2\pi f_ct+\pi)
-	\end{align*}
+	Web cameras spread around cities all other the place. Some of them may contain boring traffic exploration, another some beautiful views. Comparing to high-quality images on other services, webcam takes real-time shoots. The original intention is to allow the user to plan short weekend trips. \textbf{There is no better way to make desition rather take a small pick into a city of destination.}
+	\begin{figure}[H]
+		\centering        
+		\includegraphics[width=0.7\textwidth]{images/webcam}
+		\caption{First test print with API use.}
+		\label{fig:webcam}
+	\end{figure}
 	\subsection{Weekend planner}
-	With cost calculation, surrounding exploration and etc.
+	In addition to flight management and camera exploration, some of \textbf{the Maps services} can be used to make decisions on sight. For example, explore the streets a destination in a particular city, without moving to another Map view. \\
+	In addition to this stage of the project, final goal after implementing the server side of the project is to allow the possibility of integration this web application into Linux GNOME Desktop environment. With this opportunity, the user will be free from the browser and will be able to make a decision during weekday workflow.
+	
+	\begin{figure}[H]
+		\centering        
+		\includegraphics[width=0.7\textwidth]{images/map2}
+		\caption{Part of the map with expected functionality.}
+		\label{fig:map2}
+	\end{figure}
+		
 %===================================================%
 %													%
 %============ Technical Breakdown===================%
@@ -207,18 +224,25 @@
 %===================================================%
 \newpage
 \section{Technical Breakdown}	
-	\begin{enumerate}
-		\item A clear division between Server, Client and Cloud.
-		\item  a mock-up of your application page		
-	\end{enumerate} 
-	
+%	\begin{enumerate}
+%		\item A clear division between Server, Client and Cloud.
+%		\item  a mock-up of your application page		
+%	\end{enumerate} 
+	The image below~\ref{fig:break} represents the first structure breakdown of the current project. Arrow indicates application communication on client site, then dot arrows indicate web request and response. The blue connection between API and cloud services are constant communication to provide service.
 	\begin{figure}[H]
 		\centering		
 		\includegraphics[width=\textwidth]{images/Breakdown}
-		\caption{Data flow}
+		\caption{First structure Breakdown.}
+		\label{fig:break}
+	\end{figure}	
+	
+\section{Appendix}	
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.8\textwidth]{images/map}
+		\caption{First test implementation.}
+		\label{fig:map}
 	\end{figure}
-	
-	
 %	\begin{center}
 %		\footnotesize\textit{i.e. a QPSK modualtion scheme}\normalfont
 %	\end{center}
@@ -343,9 +367,9 @@
 %%============Bibliography and refferencing==========%
 %%												    %
 %%===================================================%
-\begin{flushleft}
-	\bibliographystyle{apacite}
-	\bibliography{referencing/referenceList}
-\end{flushleft}
+%\begin{flushleft}
+%	\bibliographystyle{apacite}
+%	\bibliography{referencing/referenceList}
+%\end{flushleft}
 
 \end{document}

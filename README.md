@@ -53,6 +53,21 @@ docker run --name Assignment1 -p 8000:80 -i -d -t smugglersmr/weekends-pl
 
 Remaining work in progrss...
 
+## Running Node Project:
+Optional reinitialise prohject.
+```
+ (optional) npm init
+```
+Perform dependancies reinstalation
+```
+npm install
+```
+
+Run scripts (app.js):
+```
+npm start
+```
+Server is expected to be listed in: <localhost> : <8484>
 ## Built With
 
 * [DockerHub](https://hub.docker.com/) - Official Docker Hub

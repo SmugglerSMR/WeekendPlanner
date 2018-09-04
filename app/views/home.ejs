@@ -1,20 +1,24 @@
 <html class="scroll-v os-windows is-medium-columns txt-size--14">
 <head>
     <meta charset="utf-8">
-    <title>CAB API</title>
-    <meta name="application-name" content="CAB API">
-    <meta name="description" content="CAB API">
+    <title>CAB432 WeekendPlanner</title>
+    <meta name="application-name" content="CAB432 assgn1">
+    <meta name="description" content="WeekendPlanner">
     <link rel="shortcut icon" href="/img/favicon.ico">
     <link rel="stylesheet" href="/css/main.css">
     <link rel="stylesheet" href="/css/style.css">
 
     <link rel="stylesheet" type="text/css" href="/javascripts/jquery-ui.min.css">
     <script type="text/javascript" src="/javascripts/jquery-3.3.1.js"></script>
-    <script type="text/javascript" src="/javascripts/jquery-ui.min.js"></script>
+	<script type="text/javascript" src="/javascripts/jquery-ui.min.js"></script>
+	
+	<script src="http://maps.googleapis.com/maps/api/js?key=<%=maps_key%>"></script>
 
+	<script type="text/javascript" src="/js/async.js"></script>
     <script type="text/javascript" src="/js/util.js"></script>
     <script type="text/javascript" src="/js/request.js"></script>
-    <script type="text/javascript" src="/js/main.js"></script>
+	<script type="text/javascript" src="/js/main.js"></script>
+	
 
 	<script type="text/javascript" id="data-config">
 	  	var config = "<%= config %>";
@@ -23,19 +27,9 @@
 </head>
 <body>
 
-	<div class="page-content">
-
-	    <div class="page-wrapped" id="page-wrapped">
-	    	<img class="page-map" src="img/australia.jpg">
-	    </div>  
+	<div class="page-content" id="map">
 
 	</div>
-	<button class="panel-button" type="button" id="zoom_in" title="In">
-	    <span class="icon icon-zoom-in"></span>
-	</button>
-	<button class="panel-button" type="button" id="zoom_out" title="Out">
-	    <span class="icon icon-zoom-out"></span>
-	</button>
 
 	<div id="modalfade"></div>
 	<div class="win-popup-message" id="msgPopup">

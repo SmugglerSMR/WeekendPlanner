@@ -145,9 +145,8 @@ code,kbd,pre,samp   {
 	font-family:"SFMono-Regular",Consolas,"Liberation Mono",Menlo,Courier,monospace
 }
 body   {
-	margin:0
+	margin:0;
 	height:100%;
-	background-color:#1c6399;
 	overflow:hidden
 }
 body:before   {

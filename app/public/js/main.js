@@ -28,163 +28,160 @@ $(document).ready(function(){
 
 });
 
-// // ----------------------------------------------
-// function _time(d) {
-// 	var h = d.getHours();
-// 	var m = d.getMinutes();
-// 	return (h<10 ? '0'+h.toString() : h.toString()) + ':' + (m<10 ? '0'+m.toString() : m.toString());
-// }	
-// // ----------------------------------------------
-// function _duration(d) {
-// 	var h = parseInt(d / 60);
-// 	var m = d % 60;
-// 	return (h>0 ? h.toString()+'h' : '') + (m>0 ? m.toString()+'m' : '');
-// }	
-// // ----------------------------------------------
-// function _airlines(fs, airlines) {
-// 	for (var j=0; j<airlines.length; j++) {
-// 		if (airlines[j].fs == fs) return airlines[j].name
-// 	}
-// 	return fs;
-// }	
-// // ----------------------------------------------
-// function _equipments(iata, equipments) {
-// 	for (var j=0; j<equipments.length; j++) {
-// 		if (equipments[j].iata == iata) return equipments[j].name
-// 	}
-// 	return iata;
-// }	
-
-// // ----------------------------------------------     --------------------------------
-// function open_city(airport) {
-
-// 	$('#modalfade').show();
-// 	$('#msgPopup').show();
-
-// 	$('#msgBody').empty().append($('<div class="loading icon-loading"></div>'));
-// 	$('#msgTitle').html('<span class="title-city-text">Departure to '+airport+'</span></span>');
-
-// 	var time = new Date().getTime();
-// 	var date = new Date(time + 24 * 3600 * 1000); 
-
-// 	get_flightstats({ 'action': 'routes',
-// 					  'fromAirport': info.main.airport,
-// 					  'toAirport': airport,
-// 					  'year':   2018,
-// 					  'month':  date.getMonth()+1,
-// 					  'day': 	date.getDate()
-// 					});
-// }	
-
-// // ---------------------------------------------- 
-// function open_webcam(id, title) {
-
-// 	$('#modalfade').show();
-// 	$('#msgPopup').show();
-
-// 	$('#msgBody').empty().append($('<div class="loading icon-loading"></div>'));
-// 	$('#msgTitle').html('<span class="title-city-text">'+title+'</span></span>');
-
-// 	var url = '/api/webcams/id/'+id+'/';
-// 	$.getJSON(url, function(rez){
-		 
-// 				 console.log(rez);
-		 
-// 				 if (rez.status == 'Error') {
-// 					 $('#modalfade').hide();
-// 					 $('#msgPopup').hide();
-// 					 return;
-// 				 }
-
-// 				 var webcams = rez.info.webcams;
-
-// 				 if (webcams && webcams.length>0) {
-
-// 					var url = webcams[0].player.day.embed;
-
-// 					$('#msgBody').empty();
-// 					h = '<iframe src="'+url+'" style="width: 100%; height: 100%"></iframe>';
-// 					$('#msgBody').append($(h));
-// 				 }
-		 
-		  
-// 	});
-					  
-
-// }	
-
-// // ----------------------------------------------   flightstats  --------------------------------
-// function get_flightstats(params) {
-
-// 	var url = '/api/flightstats/routes/'+params.fromAirport+'/'+params.toAirport+'/'+params.year+'/'+params.month+'/'+params.day+'/';
-
-// 	$.getJSON(url, function(rez){
-
-// 		console.log(rez);
-
-// 		if (rez.status == 'Error') {
-// 			$('#modalfade').hide();
-// 			$('#msgPopup').hide();
-// 			return;
-// 		}
-
-// 		$('#msgBody').empty();
-
-// 		$('#msgTitle').html('<span class="title-city-text">Departure to '+params.toAirport+'</span><span class="secondary">'+rez.date.weekday+', '+rez.date.mon+' '+rez.date.day+'</span>');
-
-// 		h = '<div class="flight-listing-container">'+
-// 			'  <ul class="results-list" id="results-list">'+
-// 			'  </ul>'+
-// 			'</div>';
-// 		$('#msgBody').append($(h));
-
-// 		var flights = rez.info.flightStatuses;
-// 		var airlines = rez.info.appendix.airlines;
-// 		var equipments = rez.info.appendix.equipments;
-// 		console.log(flights);
-// 		console.log(equipments);
-// 		for (var i=0; i<flights.length; i++) {
-
-// 			var d1 = new Date(flights[i].operationalTimes.publishedDeparture.dateLocal);
-// 			var d2 = new Date(flights[i].operationalTimes.publishedArrival.dateLocal);
-
-// 			h = '<li class="result-list-item">'+
-// 				'  <div class="grid-container">'+
-// 	            '    <div class="number-content">'+
-// 	            '       <span>'+flights[i].flightNumber+'</span>'+
-// 	            '    </div>'+
-// 	            '    <div class="time-content">'+
-// 	            '       <span>'+_time(d1)+'</span> - <span>'+_time(d2)+'</span>'+
-// 	            '    </div>'+
-// 				'    <div class="duration-content">'+
-// 	            '		<span>'+_duration(flights[i].flightDurations.scheduledBlockMinutes)+'</span>'+
-// 	            '    </div>'+
-// 				'    <div class="airline-content">'+
-// 	            '		<span>'+_airlines(flights[i].carrierFsCode, airlines)+'</span><br>'+
-// 	            '		<span>'+_equipments(flights[i].flightEquipment.actualEquipmentIataCode, equipments)+'</span>'+
-// 	            '    </div>'+
-// 				'  </div>'+
-// 				'</li>';
-
-// 			$('#results-list').append($(h));	
-// 		}	
-
-		
-// 	});
-
-
-// }
-
-// ----------------------------------------------     --------------------------------
-//------------------ From Utils
+// ----------------------------------------------
+function _time(d) {
+	var h = d.getHours();
+	var m = d.getMinutes();
+	return (h<10 ? '0'+h.toString() : h.toString()) + ':' + (m<10 ? '0'+m.toString() : m.toString());
+}	
+// ----------------------------------------------
+function _duration(d) {
+	var h = parseInt(d / 60);
+	var m = d % 60;
+	return (h>0 ? h.toString()+'h' : '') + (m>0 ? m.toString()+'m' : '');
+}	
+// ----------------------------------------------
+function _airlines(fs, airlines) {
+	for (var j=0; j<airlines.length; j++) {
+		if (airlines[j].fs == fs) return airlines[j].name
+	}
+	return fs;
+}	
+// ----------------------------------------------
+function _equipments(iata, equipments) {
+	for (var j=0; j<equipments.length; j++) {
+		if (equipments[j].iata == iata) return equipments[j].name
+	}
+	return iata;
+}	
+// ----------------------------------------------
 function  DeCode( date ){
     return unescape(date);
-  }
-  function  EnCode( date ){
+}
+// ----------------------------------------------
+function  EnCode( date ){
     return escape(date);
-  }
+}
+// ----------------------------------------------
+function open_city(airport) {
 
-//------------------
+	$('#modalfade').show();
+	$('#msgPopup').show();
+
+	$('#msgBody').empty().append($('<div class="loading icon-loading"></div>'));
+	$('#msgTitle').html('<span class="title-city-text">Departure to '+airport+'</span></span>');
+
+	var time = new Date().getTime();
+	var date = new Date(time + 24 * 3600 * 1000); 
+
+	get_flightstats({ 'action': 'routes',
+					  'fromAirport': info.main.airport,
+					  'toAirport': airport,
+					  'year':   2018,
+					  'month':  date.getMonth()+1,
+					  'day': 	date.getDate()
+					});
+}	
+
+// ---------------------------------------------- 
+function open_webcam(id, title) {
+
+	$('#modalfade').show();
+	$('#msgPopup').show();
+
+	$('#msgBody').empty().append($('<div class="loading icon-loading"></div>'));
+	$('#msgTitle').html('<span class="title-city-text">'+title+'</span></span>');
+
+	var url = '/api/webcams/id/'+id+'/';
+	$.getJSON(url, function(rez){
+		 
+				 console.log(rez);
+		 
+				 if (rez.status == 'Error') {
+					 $('#modalfade').hide();
+					 $('#msgPopup').hide();
+					 return;
+				 }
+
+				 var webcams = rez.info.webcams;
+
+				 if (webcams && webcams.length>0) {
+
+					var url = webcams[0].player.month.embed;
+
+					$('#msgBody').empty();
+					h = '<iframe src="'+url+'" style="width: 100%; height: 100%"></iframe>';
+					$('#msgBody').append($(h));
+				 }		 
+		  
+	});
+}	
+
+// --------   flightstats  ------
+function get_flightstats(params) {
+
+	var url = '/api/flightstats/routes/'+params.fromAirport+'/'+params.toAirport+'/'+params.year+'/'+params.month+'/'+params.day+'/';
+
+	$.getJSON(url, function(rez){
+
+		console.log(rez);
+
+		if (rez.status == 'Error') {
+			$('#modalfade').hide();
+			$('#msgPopup').hide();
+			return;
+		}
+
+		$('#msgBody').empty();
+
+		$('#msgTitle').html('<span class="title-city-text">Departure to '+params.toAirport+'</span><span class="secondary">'+rez.date.weekday+', '+rez.date.mon+' '+rez.date.day+'</span>');
+
+		h = '<div class="flight-listing-container">'+
+			'  <ul class="results-list" id="results-list">'+
+			'  </ul>'+
+			'</div>';
+		$('#msgBody').append($(h));
+
+		var flights = rez.info.flightStatuses;
+		var airlines = rez.info.appendix.airlines;
+		var equipments = rez.info.appendix.equipments;
+		console.log(flights);
+		console.log(equipments);
+		for (var i=0; i<flights.length; i++) {
+
+			var d1 = new Date(flights[i].operationalTimes.publishedDeparture.dateLocal);
+			var d2 = new Date(flights[i].operationalTimes.publishedArrival.dateLocal);
+
+			h = '<li class="result-list-item">'+
+				'  <div class="grid-container">'+
+	            '    <div class="number-content">'+
+	            '       <span>'+flights[i].flightNumber+'</span>'+
+	            '    </div>'+
+	            '    <div class="time-content">'+
+	            '       <span>'+_time(d1)+'</span> - <span>'+_time(d2)+'</span>'+
+	            '    </div>'+
+				'    <div class="duration-content">'+
+	            '		<span>'+_duration(flights[i].flightDurations.scheduledBlockMinutes)+'</span>'+
+	            '    </div>'+
+				'    <div class="airline-content">'+
+	            '		<span>'+_airlines(flights[i].carrierFsCode, airlines)+'</span><br>'+
+	            '		<span>'+_equipments(flights[i].flightEquipment.actualEquipmentIataCode, equipments)+'</span>'+
+	            '    </div>'+
+				'  </div>'+
+				'</li>';
+
+			$('#results-list').append($(h));	
+		}	
+
+		
+	});
+
+
+}
+
+
+
+//------------------// ------------     -------------
 function init_maps() {
 
 	if (config) {
@@ -208,55 +205,54 @@ function init_maps() {
 	container = document.getElementById('map');
 
 	async.series([
-		// function(callback) {
-		// 	geocoder.geocode( { 'address': info.main.lastSearchName}, function(results, status) {		
+		function(callback) {
+			geocoder.geocode( { 'address': info.main.lastSearchName}, function(results, status) {		
 
-		// 		if (status == google.maps.GeocoderStatus.OK) {
+				if (status == google.maps.GeocoderStatus.OK) {
 
-		// 			var adrs =  results[0].address_components;
-		// 			for (var i=0; i<adrs.length; i++) {
+					var adrs =  results[0].address_components;
+					for (var i=0; i<adrs.length; i++) {
 
-		// 				if (i==0) {
-		// 					info.main.name = adrs[i].long_name;
-		// 				}
+						if (i==0) {
+							info.main.name = adrs[i].long_name;
+						}
 
-		// 				if (adrs[i].types.indexOf('country') != -1) {
-		// 					country = adrs[i].long_name;
-		// 					break;	
-		// 				}
-		// 			}
+						if (adrs[i].types.indexOf('country') != -1) {
+							country = adrs[i].long_name;
+							break;	
+						}
+					}
 
-		// 			info.main.lat = results[0].geometry.location.lat();
-		// 			info.main.lng = results[0].geometry.location.lng();
-		// 			info.main.geometry = results[0].geometry.location;
+					info.main.lat = results[0].geometry.location.lat();
+					info.main.lng = results[0].geometry.location.lng();
+					info.main.geometry = results[0].geometry.location;
 
-		// 			console.log(info.main);
-		// 			if (country) {						
-		// 				callback();
-		// 			}	
-		// 		}	
-		// 	});
-		// },
-		// function(callback) { 
+					console.log(info.main);
+					if (country) {						
+						callback();
+					}	
+				}	
+			});
+		},
+		function(callback) { 
 		
-		// 	geocoder.geocode( { 'address': country}, function(results, status) {		
-		// 		console.log(results, status);				
+			geocoder.geocode( { 'address': country}, function(results, status) {		
+				console.log(results, status);				
 				
-		// 		if (status == google.maps.GeocoderStatus.OK) {
+				if (status == google.maps.GeocoderStatus.OK) {
 
-		// 			// center.lat = results[0].geometry.location.lat();
-		// 			// center.lng = results[0].geometry.location.lng();
+					center.lat = results[0].geometry.location.lat();
+					center.lng = results[0].geometry.location.lng();
 
-		// 			callback();
-		// 		}
-		// 	});			
+					callback();
+				}
+			});			
 		
-		// },
+		},
 		function(callback) { 
 
-			//console.log(center);
-            center.lat = 54;
-            center.lng = 54;
+			console.log(center);
+		
 			options = {
 				zoom: 5,	
 				center: center,	
@@ -300,32 +296,33 @@ function init_maps() {
 				callback();
 			}, 500);	
 		},
-		// function(callback) { 
+		function(callback) { 
 		
-		// 	info.main.marker =  new google.maps.Marker({
-		// 		position: info.main.geometry,
-		// 		map: map,
-		// 		icon: image_red,
-		// 	});	
+			info.main.marker =  new google.maps.Marker({
+				position: info.main.geometry,
+				map: map,
+				icon: image_red,
+			});	
 
-		// 	callback();  
-		// },
-		// function(callback) {
+			callback();  
+		},
+		function(callback) {
 
-		// 	show_cities( function(r){
-		// 		callback();
-		// 	});
+			show_cities( function(r){
+				callback();
+			});
 
-		// },
-		// function(callback) { 
+		},
+		function(callback) { 
 
-		// 	if (info.main.webcams) {
+			if (info.main.webcams) {
 
-		// 		info.main.overlay = set_map_webcams(new google.maps.LatLng(info.main.lat, info.main.lng), info.main.webcams, info.main.ps);	
-		// 	}	
+                info.main.overlay = set_map_webcams(new google.maps.
+                    LatLng(info.main.lat, info.main.lng), info.main.webcams, info.main.ps);	
+			}	
 
-		// 	callback();  
-		// }
+			callback();  
+		}
 	
 	]);
 }	
@@ -403,7 +400,7 @@ function show_city( city, callback ) {
 			}	
 
 			callback();
-		},
+		}
 	]);
 
 
@@ -453,8 +450,7 @@ function set_map_webcams(coordinates, webcams, ps) {
 						});
 
 		return overlay;
-	}
-	{
+	} else  {
 		return null;
 	}	
 }	

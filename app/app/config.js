@@ -18,7 +18,7 @@ var cfg = {
 	"global":{
 		HOST: "",
 		PORT: "3000",
-		DEFAULT_COOKIES_DOMAIN: "sadukow.com",
+		DEFAULT_COOKIES_DOMAIN: "cab432-sadykov-planner.com",
 		FLIGHTSTATS: {
 			appId: '7f2f5bc3',
 			appKey: '5d403f57186fd4aa6376a661a48c7196'

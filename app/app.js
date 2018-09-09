@@ -13,6 +13,7 @@ var cookieParser = require('cookie-parser')
 // ============= Setup
 var config = require("./app/config");
 var indx = require('./routes/index');
+var readApi = require('./routes/api');
 
 const port = process.env.OPENSHIFT_NODEJS_PORT || process.env.PORT || config.PORT;
 const host = process.env.OPENSHIFT_NODEJS_HOST || process.env.HOST || config.HOST;
@@ -22,8 +23,6 @@ app.use(favicon(__dirname + '/public/img/favicon.ico'));
 
 // ============= Configuration Using Express 4
 app.use(logger('dev')) ;
-// app.use(bodyParser()) ;
-// app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cookieParser())
 app.use(session({ resave: true,
     saveUninitialized: true,
@@ -42,15 +41,11 @@ app.use(express.static(__dirname + '/public'));
 // });
 
 // ============= API Routes
-// app.get('/', function (appReq, appRes){
-
-// });
-
 app.get('/', indx.index );
-//app.get('/home', indx.index );
-// app.get('/api/flightstats/routes/:fromAir/:toAir/:year/:month/:day/',
-//             readApi.flightstats_routes );
-// app.get('/api/webcams/id/:id/', readApi.webcams_id );
+//app.get('/test', require('./routes/popup').index );
+app.get('/api/flightstats/routes/:fromAir/:toAir/:year/:month/:day/',
+             readApi.flightstats_routes );
+app.get('/api/webcams/id/:id/', readApi.webcams_id );
 
 
 app.listen(port, function () {

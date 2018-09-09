@@ -176,6 +176,15 @@ $(document).ready(function(){
 // }
 
 // ----------------------------------------------     --------------------------------
+//------------------ From Utils
+function  DeCode( date ){
+    return unescape(date);
+  }
+  function  EnCode( date ){
+    return escape(date);
+  }
+
+//------------------
 function init_maps() {
 
 	if (config) {
@@ -183,113 +192,114 @@ function init_maps() {
 	}
 	console.log(info);
 
-	// image_red = {
-	// 	url: '/img/circle_red_20x20.png',
-	// 	size:   new google.maps.Size(20, 20),     	
-	// 	origin: new google.maps.Point(0, 0),    	
-	// 	anchor: new google.maps.Point(10, 10)		
-	//   };
-	// image_green = {
-	// 	url: '/img/circle_green_24x24.png',
-	// 	size:   new google.maps.Size(24, 24),     	
-	// 	origin: new google.maps.Point(0, 0),    	
-	// 	anchor: new google.maps.Point(12, 12)		
-	//   };
+	image_red = {
+		url: '/img/circle_red_20x20.png',
+		size:   new google.maps.Size(20, 20),     	
+		origin: new google.maps.Point(0, 0),    	
+		anchor: new google.maps.Point(10, 10)		
+	  };
+	image_green = {
+		url: '/img/circle_green_24x24.png',
+		size:   new google.maps.Size(24, 24),     	
+		origin: new google.maps.Point(0, 0),    	
+		anchor: new google.maps.Point(12, 12)		
+	  };
 		
 	container = document.getElementById('map');
 
 	async.series([
-		function(callback) {
-			geocoder.geocode( { 'address': info.main.lastSearchName}, function(results, status) {		
+		// function(callback) {
+		// 	geocoder.geocode( { 'address': info.main.lastSearchName}, function(results, status) {		
 
-				if (status == google.maps.GeocoderStatus.OK) {
+		// 		if (status == google.maps.GeocoderStatus.OK) {
 
-					var adrs =  results[0].address_components;
-					for (var i=0; i<adrs.length; i++) {
+		// 			var adrs =  results[0].address_components;
+		// 			for (var i=0; i<adrs.length; i++) {
 
-						if (i==0) {
-							info.main.name = adrs[i].long_name;
-						}
+		// 				if (i==0) {
+		// 					info.main.name = adrs[i].long_name;
+		// 				}
 
-						if (adrs[i].types.indexOf('country') != -1) {
-							country = adrs[i].long_name;
-							break;	
-						}
-					}
-
-					info.main.lat = results[0].geometry.location.lat();
-					info.main.lng = results[0].geometry.location.lng();
-					info.main.geometry = results[0].geometry.location;
-
-					console.log(info.main);
-					if (country) {						
-						callback();
-					}	
-				}	
-			});
-		},
-		function(callback) { 
-		
-			geocoder.geocode( { 'address': country}, function(results, status) {		
-				console.log(results, status);				
-				
-				if (status == google.maps.GeocoderStatus.OK) {
-
-					// center.lat = results[0].geometry.location.lat();
-					// center.lng = results[0].geometry.location.lng();
-
-					callback();
-				}
-			});			
-		
-		},
-		// function(callback) { 
-
-		// 	console.log(center);
-		
-		// 	options = {
-		// 		zoom: 5,	
-		// 		center: center,	
-		// 		//mapTypeId: google.maps.MapTypeId.TERRAIN		
-		// 		mapTypeId: google.maps.MapTypeId.ROADMAP
-		// 	};    
-			
-		// 	map = new google.maps.Map(container, options);
-
-		// 	google.maps.event.addListener(map, 'click', function(event) {
-			
-		// 		console.log('maps click', event);
-
-		// 		var latitude = event.latLng.lat();
-		// 		var longitude = event.latLng.lng();
-
-		// 		for (var i=0; i<elemOverlays.length; i++) {
-
-		// 			var lat1 = elemOverlays[i].coord1.lat();
-		// 			var lng1 = elemOverlays[i].coord1.lng();
-		// 			var lat2 = elemOverlays[i].coord2.lat();
-		// 			var lng2 = elemOverlays[i].coord2.lng();
-
-		// 			var lat_min = Math.min(lat1, lat2);
-		// 			var lat_max = Math.max(lat1, lat2);
-		// 			var lng_min = Math.min(lng1, lng2);
-		// 			var lng_max = Math.max(lng1, lng2);
-
-		// 			//console.log(lat1, latitude, lat2, lng1, longitude, lng2, elemOverlays[i].webcamId);
-		// 			//console.log(lat_min, latitude, lat_max, lng_min, longitude, lng_max, elemOverlays[i].webcamId);
-
-		// 			if (latitude > lat_min && latitude < lat_max && longitude > lng_min && longitude < lng_max) {
-		// 				open_webcam(elemOverlays[i].webcamId, elemOverlays[i].webcamTitle);
+		// 				if (adrs[i].types.indexOf('country') != -1) {
+		// 					country = adrs[i].long_name;
+		// 					break;	
+		// 				}
 		// 			}
 
-		// 		}
+		// 			info.main.lat = results[0].geometry.location.lat();
+		// 			info.main.lng = results[0].geometry.location.lng();
+		// 			info.main.geometry = results[0].geometry.location;
 
+		// 			console.log(info.main);
+		// 			if (country) {						
+		// 				callback();
+		// 			}	
+		// 		}	
 		// 	});
-
-		// 	setTimeout( function() {
-		// 		callback();
-		// 	}, 500);	
 		// },
+		// function(callback) { 
+		
+		// 	geocoder.geocode( { 'address': country}, function(results, status) {		
+		// 		console.log(results, status);				
+				
+		// 		if (status == google.maps.GeocoderStatus.OK) {
+
+		// 			// center.lat = results[0].geometry.location.lat();
+		// 			// center.lng = results[0].geometry.location.lng();
+
+		// 			callback();
+		// 		}
+		// 	});			
+		
+		// },
+		function(callback) { 
+
+			//console.log(center);
+            center.lat = 54;
+            center.lng = 54;
+			options = {
+				zoom: 5,	
+				center: center,	
+				//mapTypeId: google.maps.MapTypeId.TERRAIN		
+				mapTypeId: google.maps.MapTypeId.ROADMAP
+			};    
+			
+			map = new google.maps.Map(container, options);
+
+			google.maps.event.addListener(map, 'click', function(event) {
+			
+				console.log('maps click', event);
+
+				var latitude = event.latLng.lat();
+				var longitude = event.latLng.lng();
+
+				for (var i=0; i<elemOverlays.length; i++) {
+
+					var lat1 = elemOverlays[i].coord1.lat();
+					var lng1 = elemOverlays[i].coord1.lng();
+					var lat2 = elemOverlays[i].coord2.lat();
+					var lng2 = elemOverlays[i].coord2.lng();
+
+					var lat_min = Math.min(lat1, lat2);
+					var lat_max = Math.max(lat1, lat2);
+					var lng_min = Math.min(lng1, lng2);
+					var lng_max = Math.max(lng1, lng2);
+
+					//console.log(lat1, latitude, lat2, lng1, longitude, lng2, elemOverlays[i].webcamId);
+					//console.log(lat_min, latitude, lat_max, lng_min, longitude, lng_max, elemOverlays[i].webcamId);
+
+					if (latitude > lat_min && latitude < lat_max && longitude > lng_min && longitude < lng_max) {
+						open_webcam(elemOverlays[i].webcamId, elemOverlays[i].webcamTitle);
+					}
+
+				}
+
+			});
+
+			setTimeout( function() {
+				callback();
+			}, 500);	
+		},
 		// function(callback) { 
 		
 		// 	info.main.marker =  new google.maps.Marker({

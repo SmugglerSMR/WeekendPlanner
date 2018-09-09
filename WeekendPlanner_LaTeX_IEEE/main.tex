@@ -146,7 +146,7 @@
 	The aim of this project to provide users with some comfortable environment to plan their journeys. This planner will use one of the following API\footnote{TO BE CONFIRMED Later during project work}: 
 	
 	\begin{itemize}
-		\item Google Maps, Yandex Maps, Leaflead*
+		\item Google Maps
 		\item Expedian*, Skyscanner**
 		\item Webcam
 	\end{itemize}
@@ -161,10 +161,16 @@
 %		\textcolor{red}{red colored text}\\		
 %		Googlew MAps. Yeandex. \\
 		$ https://developers.google.com/maps/documentation/ $ \\
-		$ https://tech.yandex.com/hubs/mapsmodules/ $ \\
 		
 		The foundation for weekend planer environment is continental Map. Gladly, there is a high chance of finding a right Map provider. Two global websites, whose work offers an API for use cases are Google Maps and Yandex. If first is the global giant, who existed in the worldwide market for a while, second has the most popularity in Russian. Both of them will serve the primary purpose very well: establish a right environment for integrating other API. \\
 		Besides, both services provide an excellent API to extend the scope of the current project. \\
+		
+		\begin{figure}[H]
+			\centering        
+			\includegraphics[width=0.7\textwidth]{images/google-map}
+			\caption{First test print with API use.}
+			\label{fig:gmaps}
+		\end{figure}
 	
 %		\subsubsection{Google Maps}
 %			\begin{figure}[H]
@@ -179,8 +185,7 @@
 %			Flyght stats.
 	\subsection{Flight Management}
 		$ https://hackathon.expedia.com/docs/public/api/Flights Overview/ $ \\
-		$ https://partners.skyscanner.net/affiliates/travel-apis/ $ \\
-		$ https://developer.ean.com/getting-started/getting-started-with-rapid/ $ \\
+		$ https://partners.skyscanner.net/affiliates/travel-apis/ $ \\		
 		
 		To gather information about the possible flight tickets, there is a possibility of particular problems. Since the beginning of the project, the request for API keys may take longer than expected. Such services like Expedia provides some flight information, which may be used to gather closest flight information about time, prices, airports. Obtaining this information may become a trickier process. For example, if there will be no alternatives discovered, the best solution in this situation will be parsing web page with flight information. However, this approach goes beyond the scope of the assignment, it may prove itself as a good, but not easy, alternative.\\
 %		\subsubsection{Expedia}
@@ -235,7 +240,22 @@
 		\caption{First structure Breakdown.}
 		\label{fig:break}
 	\end{figure}	
+\newpage
+\section{Client}
+		
+\section{Server}
+\section{*Response Filtering}
+
+\section{Pug}
+
+\section{Difficulties}
 	
+	\subsection{More API than necessary}
+	\subsection{Asynchronic request}
+\section{Future work}
+	\subsection{Gnome Integration}
+	\subsection{Several Extra APIs}
+
 \section{Appendix}	
 	\begin{figure}[H]
 		\centering		

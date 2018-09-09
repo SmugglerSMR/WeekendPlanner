@@ -47,7 +47,7 @@ app.use(express.static(__dirname + '/public'));
 // });
 
 app.get('/', indx.index );
-app.get('/home', indx.index );
+//app.get('/home', indx.index );
 // app.get('/api/flightstats/routes/:fromAir/:toAir/:year/:month/:day/',
 //             readApi.flightstats_routes );
 // app.get('/api/webcams/id/:id/', readApi.webcams_id );

@@ -4,7 +4,8 @@
   "description": "CAB432 Assignment 1 (50%) WeekendPlanner",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node app.js"    
   },
   "repository": {
     "type": "git",
@@ -32,5 +33,5 @@
     "request": "^2.88.0",
     "serve-favicon": "^2.5.0",
     "underscore": "^1.9.1"
-  }
+  }  
 }

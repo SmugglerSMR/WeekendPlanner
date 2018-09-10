@@ -36,7 +36,7 @@ docker build -t weekends-pl .
 Next, run docker in order to acess it.
 Flags specify certain parameters: -p Port iner&outer. -d run as damonise.
 ```
-docker run --name Assignment1 -p 8000:80 -i -d -t weekends-pl
+docker run --name Assignment11 -p 8000:3000 -i -d -t weekends-pl
 ```
 After just move to localhost:8000 to see folder.
 
@@ -48,13 +48,24 @@ docker push smugglersmr/weekends-pl
 
 Similar way to run in from DuckerHub strigh Forward.
 ```
-docker run --name Assignment1 -p 8000:80 -i -d -t smugglersmr/weekends-pl
+docker run --name Assignment1 -p 8000:3000 -i -d -t smugglersmr/weekends-pl
 ```
 
 Remaining work in progrss...
 
+## Removing
+Container after start
+```
+docker stop Assignment11
+docker rm Assignment1
+```
+Image after stopping everything
+```
+docker rmi weekends-pl
+```
 ## Running Node Project:
 Optional reinitialise prohject.
+(optional) If we want to start project from the start
 ```
  (optional) npm init
 ```

@@ -1,5 +1,5 @@
 # Set initial image to ubuntu
-FROM ubuntu
+FROM node:8
 # Author
 LABEL maintainer="Smuggler"
 # Updating
@@ -10,24 +10,15 @@ dialog \
 git \
 mc \
 net-tools \
-python \
-python-dev \
-python-setuptools \
-python-distribute \
-python-pip \
-python-numpy \
-python-scipy \
+npm \
 tar \
 vim \
 wget
-# pip installation
-RUN pip install flask
-RUN pip install cherrypy
-RUN pip install -U nltk
 # copy the app
 ADD /app /app
 # expose
 EXPOSE 80
 # Default directory
 WORKDIR /app
-CMD python server.py
+RUN npm install
+CMD [ "npm", "start" ]

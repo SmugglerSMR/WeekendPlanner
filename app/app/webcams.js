@@ -27,9 +27,9 @@ exports.get = function(params, callback) {
                     'X-Mashape-Host': 'webcamstravel.p.mashape.com'
                 }
             };
-
+	
     request( opts, function (error, response, body){
-
+		console.log('RESS:', response);
         try {
             if (body.status == 'OK') {
                 callback(body.result);

@@ -33,16 +33,9 @@ app.set('view engine', 'ejs');
 
 
 app.use(express.static(__dirname + '/public'));
-// app.use(function(req, res){
-//     res.status(404);
-//     console.log('Not found URL: ',req.url);
-//     res.send({ error: 'Not found' });
-//     return;
-// });
 
 // ============= API Routes
 app.get('/', indx.index );
-//app.get('/test', require('./routes/popup').index );
 app.get('/api/flightstats/routes/:fromAir/:toAir/:year/:month/:day/',
              readApi.flightstats_routes );
 app.get('/api/webcams/id/:id/', readApi.webcams_id );

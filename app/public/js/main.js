@@ -104,6 +104,17 @@ function open_webcam(id, title) {
 	});
 }	
 
+// ---------------------------------------------- 
+function open_main_city() {
+
+	$('#modalfade').show();
+	$('#msgPopup').show();
+
+	$('#msgBody').empty().append($('<div class="loading icon-loading"></div>'));
+	$('#msgTitle').html('<span class="title-city-text">Change Main City</span></span>');
+	
+}	
+
 // --------   flightstats  ------
 function get_flightstats(params) {
 
@@ -282,7 +293,8 @@ function init_maps() {
 			setTimeout( function() {
 				callback();
 			}, 500);	
-		},
+		},		
+
 		function(callback) { 
 		
 			info.main.marker =  new google.maps.Marker({
@@ -309,6 +321,13 @@ function init_maps() {
 			}	
 
 			callback();  
+		},
+		function(callback){
+		
+			document.getElementById('button-change').addEventListener('click', function(event) {
+				open_main_city();				
+			});
+
 		}
 	
 	]);
@@ -463,7 +482,7 @@ function pixelOffsetToLatLng(offsetx,offsety) {
 
 /** @constructor */
 function USGSOverlay(bounds, image, map) {
-
+	
 	// Now initialize all properties.
 	this.bounds_ = bounds;
 	this.image_ = image;
@@ -483,7 +502,7 @@ function USGSOverlay(bounds, image, map) {
  * added to the map.
  */
 USGSOverlay.prototype.onAdd = function() {
-
+	
 	var div = document.createElement('div');
 	div.style.border = 'solid';
 	div.style.borderWidth = '2px';
@@ -505,6 +524,17 @@ USGSOverlay.prototype.onAdd = function() {
 
 USGSOverlay.prototype.draw = function() {
 
+	// Check image
+	if(this.image_ === null) {
+		var div = this.div_;
+		div.style.left = '-50%';
+		div.style.top = '-50%';
+		div.style.width = '150px';
+		div.style.height = '50px';
+		div.innerHTML='<div style="margin-top: 10px;">Change Main City.</div>';
+		
+		return;
+	} 	
 	// We use the south-west and north-east
 	// coordinates of the overlay to peg it to the correct position and size.
 	// To do this, we need to retrieve the projection from the overlay.

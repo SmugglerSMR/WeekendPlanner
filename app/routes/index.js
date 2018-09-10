@@ -57,10 +57,13 @@ exports.index = function (req, res) {
 							chainCallback();
 						}	
 						else {
-							res.render('error', {
-								title: 			'CAB API ERROR',
-								text: 			'ERROR in Expedia',
-							});
+							var x = Expedia.def_(MAIN_CITY.name);
+							info.main['displayName'] = x['displayName'];
+							info.main['fullName'] = x['fullName'];
+							info.main['lastSearchName'] = x['lastSearchName'];
+							info.main['shortName'] = x['displayName'];	
+							info.main['coordinates'] = x.coordinates;
+							info.main['airport'] = x.airport;
 						}
 
 			});
@@ -138,6 +141,14 @@ function get_city(city, callback) {
 									data['airport'] = rez[i].hierarchyInfo.airport.airportCode;
 								}
 							}
+						} else {
+							var x = Expedia.def_(city.name);
+							data['displayName'] = x['displayName'];
+							data['fullName'] = x['fullName'];
+							data['lastSearchName'] = x['lastSearchName'];
+							data['shortName'] = x['displayName'];	
+							data['coordinates'] = x.coordinates;
+							data['airport'] = x.airport;
 						}	
 
 						chainCallback();

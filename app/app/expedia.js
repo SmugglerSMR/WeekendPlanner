@@ -28,7 +28,7 @@ exports.typeahead = function(city, callback) {
 
 };
 
-// Some cities predefined originally
+// Some cities predefined originally. In order to safe from Expedia error.
 function def_(name) {
 
     if (name == 'brisbane') {

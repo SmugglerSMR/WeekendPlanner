@@ -278,4 +278,18 @@
   width: 250px;
   height: 100%;
   vertical-align: top;
+} 
+.button-content {
+    position: fixed;
+	z-index: 999;
+	left: 10px;
+	top: 70px;
+	width: 120px;
+	height: 26px;
+	border: 1px solid #333;
+	border-radius: 2px;
+	padding: 10px 15px;
+}
+.button-content span {
+
 }

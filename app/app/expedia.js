@@ -13,6 +13,7 @@ exports.typeahead = function(city, callback) {
 
 		if (error) console.log('ERROR exports.typeahead:', error);
         try {
+			// From a time then response used as a string.
 			var info = body !== typeof body ? body : JSON.parse(body.substring(1, body.length-1));
             if (info.rc == 'OK') {
                 callback(info.sr);

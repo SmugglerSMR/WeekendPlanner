@@ -104,17 +104,6 @@ function open_webcam(id, title) {
 	});
 }	
 
-// ---------------------------------------------- 
-function open_main_city() {
-
-	$('#modalfade').show();
-	$('#msgPopup').show();
-
-	$('#msgBody').empty().append($('<div class="loading icon-loading"></div>'));
-	$('#msgTitle').html('<span class="title-city-text">Change Main City</span></span>');
-	
-}	
-
 // --------   flightstats  ------
 function get_flightstats(params) {
 
@@ -293,8 +282,28 @@ function init_maps() {
 			setTimeout( function() {
 				callback();
 			}, 500);	
-		},		
+		},	
+		function(callback){
+		
+			document.getElementById('button-change').addEventListener('click', function(event) {
+				change_main_city();				
+			});
 
+			callback();
+
+		},		
+		function(callback) { 
+	
+			build_map();
+				
+		},
+	
+	]);
+}	
+
+function build_map( callback ) {
+
+	async.series([
 		function(callback) { 
 		
 			info.main.marker =  new google.maps.Marker({
@@ -321,16 +330,9 @@ function init_maps() {
 			}	
 
 			callback();  
-		},
-		function(callback){
-		
-			document.getElementById('button-change').addEventListener('click', function(event) {
-				open_main_city();				
-			});
-
-		}
-	
+		}	
 	]);
+
 }	
 
 function show_cities( callback ) {
@@ -615,3 +617,62 @@ function point2LatLng(point, map) {
 	return map.getProjection().fromPointToLatLng(worldPoint);
 }      
 
+
+// ---------------------------------------------- 
+function change_main_city() {
+
+	$('#modalfade').show();
+	$('#msgPopup').show();
+
+	$('#msgTitle').html('<span class="title-city-text">Change Main City</span></span>');
+
+	var bl = $('<div class="change-city-list"></div>');
+	$('#msgBody').empty().append(bl);
+	
+	var inp = $('<div class="change-city-item"><input type="radio" checked id="city_"'+info.main.name+'"" name="main-city" value="'+info.main.name+'"><label for="city_"'+info.main.name+'">'+info.main.name+'</label></div>')
+	bl.append(inp);
+
+	for (var j=0; j<info.cities.length; j++) {
+
+		inp = $('<div class="change-city-item"><input type="radio" id="city_"'+info.cities[j].name+' name="main-city" value="'+info.cities[j].name+'"><label for="city_"'+info.main.name+'">'+info.cities[j].name+'</label></div>');
+		bl.append(inp);
+	}
+
+	bl.append( $('<div class="change-city-button"><button id="submit-button" class="submit-button">Submit</button></div>') );
+
+	bl.find('#submit-button').bind('click', function(){
+
+		set_main_city( bl.find('input:checked').val() );
+
+	});
+
+}  
+
+// ---------------------------------------------- 
+function set_main_city(val) {
+
+	$('#modalfade').hide();
+	$('#msgPopup').hide();
+
+	info.main.marker.setMap(null);
+	for (var j=0; j<info.cities.length; j++) {
+		info.cities[j].marker.setMap(null);
+		info.cities[j].route.setMap(null);
+	}	
+
+	console.log('set_main_city', val);
+
+	var m = info.main;
+
+	for (var j=0; j<info.cities.length; j++) {
+		if (info.cities[j].name === val ) {
+			info.main = info.cities[j];
+			info.cities[j] = m;
+		}
+	}	
+
+	console.log(info);
+
+	build_map();
+
+}	

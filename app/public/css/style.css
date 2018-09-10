@@ -280,16 +280,47 @@
   vertical-align: top;
 } 
 .button-content {
-    position: fixed;
-	z-index: 999;
-	left: 10px;
-	top: 70px;
-	width: 120px;
-	height: 26px;
-	border: 1px solid #333;
-	border-radius: 2px;
-	padding: 10px 15px;
-}
-.button-content span {
-
-}
+	position: fixed;
+	  z-index: 999;
+	  left: 10px;
+	  top: 70px;
+	  width: 118px;
+	  height: 20px;
+	  border: 1px solid #333;
+	  border-radius: 2px;
+	  padding: 10px 15px;
+	cursor: pointer;
+  }
+  .button-content span {
+  
+  }
+  .change-city-list {
+	margin: 30px 80px;
+	font-size: 16px;
+  }
+  .change-city-item {
+	display: block;
+	margin: 5px 0;
+  }
+  .change-city-item label {
+	margin-left: 20px;
+  }  
+  .change-city-button {
+	margin: 40px;
+  }
+  .submit-button {
+	padding: 7px 16px 8px;
+	margin: 0;
+	font-size: 12.5px;
+	display: inline-block;
+	cursor: pointer;
+	vertical-align: top;
+	line-height: 15px;
+	text-align: center;
+	text-decoration: none;
+	background-color: #5181b8;
+	color: #fff;
+	border: 0;
+	border-radius: 4px;
+	box-sizing: border-box
+  }  

@@ -2,26 +2,25 @@ var URL = require('url');
 var async = require('../app/async');
 var config = require('../app/config');
 
-var Expedia = require( "../app/expedia" );
-var Flightstats = require( "../app/flightstats" );
-var Webcams = require( "../app/webcams" );
+var Expedia = require( '../app/expedia' );
+var Webcams = require( '../app/webcams' );
 
-const MAIN_CITY = { 'name': 'brisbane', ps: 'right' };
+var MAIN_CITY = { 'name': 'brisbane', ps: 'right' };
 
-const CITY = [ { name: 'sydney',   ps: 'right' },
-    		   { name: 'canberra', ps: 'bottom' },
-               { name: 'darwin',   ps: 'top' },
-               { name: 'adelaide',   ps: 'bottom' },
-               { name: 'melbourne',   ps: 'bottom' },               
-    		   { name: 'perth',    ps: 'left' }
-    		 ];  
+var CITY = [ 	{ name: 'sydney',   ps: 'right' },
+				{ name: 'canberra', ps: 'bottom' },	
+				{ name: 'darwin',   ps: 'top' },
+				{ name: 'adelaide',   ps: 'bottom' },
+				{ name: 'melbourne',   ps: 'bottom' },
+				{ name: 'perth',    ps: 'left' }
+			];  
 
 
-exports.index = function (req, res, next) {
+exports.index = function (req, res) {
 
-	var info = {  main: {},
-				  cities: []	
-			   };
+	var info = {  	main: {},
+					cities: []	
+				};
 
 	var queryData = URL.parse(req.url, true).query;
 	var showId = queryData.showId ? queryData.showId : null;
@@ -71,30 +70,27 @@ exports.index = function (req, res, next) {
 
 			info.main['nearby'] = info.main.coordinates.lat+','+info.main.coordinates.long+',15';
 
-			Webcams.get({  nearby:  info.main['nearby'],
-						   show:    'webcams:image,location',
-						   limit:   3
-			            }, function(rez){
-							  info.main['webcams'] = rez && rez.webcams ? rez.webcams : null;
-			                  chainCallback();
-			            });
+			Webcams.get({  	nearby:  info.main['nearby'],
+							show:    'webcams:image,location',
+							limit:   3
+						}, function(rez){
+							info.main['webcams'] = rez && 
+											rez.webcams ? rez.webcams : null;
+							chainCallback();
+						});
 
         },
         // Cities - name
 		function( chainCallback ){								
             // Make check for MAIN_CITy
 			async.each(CITY, function(city, next) {
-		 
 				get_city(city, function(data){
-
 					info.cities.push( data );
 					next();
-
 				});
-
-		    },  function(err) {
-		        chainCallback();
-		    });
+			},  function(err) {
+				chainCallback();
+			});
 
 		},
 		function( chainCallback ){
@@ -152,17 +148,14 @@ function get_city(city, callback) {
 
 			data['nearby'] = data.coordinates.lat+','+data.coordinates.long+',15';
 
-			Webcams.get({  nearby:  data['nearby'],
-			               show:    'webcams:image,location'
-			            }, function(rez){
-
-							  data['webcams'] = rez && rez.webcams ? rez.webcams : null;
-							  chainCallback();
-			            });
-
+			Webcams.get({	nearby:  data['nearby'],
+							show:    'webcams:image,location'
+						}, function(rez){
+							data['webcams'] = rez && rez.webcams ? rez.webcams : null;
+							chainCallback();
+						});
         },        
 		function( chainCallback ){								
-
 			callback(data);
 		}
 	]);

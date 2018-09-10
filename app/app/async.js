@@ -27,10 +27,10 @@
     function only_once(fn) {
         var called = false;
         return function() {
-            if (called) throw new Error("Callback was already called.");
+            if (called) throw new Error('Callback was already called.');
             called = true;
             fn.apply(root, arguments);
-        }
+        };
     }
 
     //// cross-browser compatiblity functions ////
@@ -419,7 +419,7 @@
     async.auto = function (tasks, callback) {
         callback = callback || function () {};
         var keys = _keys(tasks);
-        var remainingTasks = keys.length
+        var remainingTasks = keys.length;
         if (!remainingTasks) {
             return callback();
         }
@@ -439,7 +439,7 @@
             }
         };
         var taskComplete = function () {
-            remainingTasks--
+            remainingTasks--;
             _each(listeners.slice(0), function (fn) {
                 fn();
             });
@@ -524,9 +524,9 @@
                 data = data[data.length - 1];
                 (wrappedCallback || callback)(data.err, data.result);
             });
-        }
+        };
         // If a callback is passed, run this as a controll flow
-        return callback ? wrappedTask() : wrappedTask
+        return callback ? wrappedTask() : wrappedTask;
     };
 
     async.waterfall = function (tasks, callback) {
@@ -839,7 +839,7 @@
 
         function _compareTasks(a, b){
           return a.priority - b.priority;
-        };
+        }
 
         function _binarySearch(sequence, item, compare) {
           var beg = -1,
@@ -1062,7 +1062,7 @@
                     var err = arguments[0];
                     var nextargs = Array.prototype.slice.call(arguments, 1);
                     cb(err, nextargs);
-                }]))
+                }]));
             },
             function (err, results) {
                 callback.apply(that, [err].concat(results));

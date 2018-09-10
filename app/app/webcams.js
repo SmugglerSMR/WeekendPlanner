@@ -1,7 +1,6 @@
 var request = require('request');
-var querystring = require('querystring');
 
-var Config = require("./config");
+var Config = require('./config');
 
 // --------------------------------------------------------------------
 exports.get = function(params, callback) {
@@ -21,11 +20,11 @@ exports.get = function(params, callback) {
     } 
 
     var opts = {  url:      url,
-                method:   "GET",
+                method:   'GET',
                 json:     true,
                 headers:  {
-                    "X-Mashape-Key":  Config.WEBCAMS.appKey,
-                    "X-Mashape-Host": "webcamstravel.p.mashape.com"
+                    'X-Mashape-Key':  Config.WEBCAMS.appKey,
+                    'X-Mashape-Host': 'webcamstravel.p.mashape.com'
                 }
             };
 
@@ -43,7 +42,7 @@ exports.get = function(params, callback) {
             callback(null);
         }
     });
-}
+};
 
 // --------------------------------------------------------------------
 exports.show = function(rez) {
@@ -63,4 +62,4 @@ exports.show = function(rez) {
     else {
         console.log(rez);
     } 
-}  
+};  

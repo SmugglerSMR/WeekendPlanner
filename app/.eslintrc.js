@@ -1,8 +1,8 @@
 module.exports = {
     "env": {
         "browser": true,
-        "commonjs": true,
-        "node": true
+		"commonjs": true,		
+  		"jquery": true
     },
     "extends": "eslint:recommended",
     "parserOptions": {
@@ -11,15 +11,7 @@ module.exports = {
         },
         "ecmaVersion": 5
     },
-    "rules": {
-        "indent": [
-            "error",
-            "tab"
-        ],
-        "linebreak-style": [
-            "error",
-            "unix"
-        ],
+    "rules": {                
         "quotes": [
             "error",
             "single"
@@ -27,6 +19,9 @@ module.exports = {
         "semi": [
             "error",
             "always"
-        ]
+		],
+		'no-console': 'off',
+		'no-undef': 'off',
+		'no-unused-vars': 'off'
     }
 };

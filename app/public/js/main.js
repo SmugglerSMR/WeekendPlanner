@@ -1,7 +1,4 @@
-var scale = 1;
-
 var info = null;
-
 var country = null;
 var center = {};
 var options = {};
@@ -43,24 +40,20 @@ function _duration(d) {
 // ----------------------------------------------
 function _airlines(fs, airlines) {
 	for (var j=0; j<airlines.length; j++) {
-		if (airlines[j].fs == fs) return airlines[j].name
+		if (airlines[j].fs == fs) return airlines[j].name;
 	}
 	return fs;
 }	
 // ----------------------------------------------
 function _equipments(iata, equipments) {
 	for (var j=0; j<equipments.length; j++) {
-		if (equipments[j].iata == iata) return equipments[j].name
+		if (equipments[j].iata == iata) return equipments[j].name;
 	}
 	return iata;
 }	
 // ----------------------------------------------
 function  DeCode( date ){
     return unescape(date);
-}
-// ----------------------------------------------
-function  EnCode( date ){
-    return escape(date);
 }
 // ----------------------------------------------
 function open_city(airport) {
@@ -74,12 +67,12 @@ function open_city(airport) {
 	var time = new Date().getTime();
 	var date = new Date(time + 24 * 3600 * 1000); 
 
-	get_flightstats({ 'action': 'routes',
-					  'fromAirport': info.main.airport,
-					  'toAirport': airport,
-					  'year':   2018,
-					  'month':  date.getMonth()+1,
-					  'day': 	date.getDate()
+	get_flightstats({ 	'action': 'routes',
+						'fromAirport': info.main.airport,
+						'toAirport': airport,
+						'year':   2018,
+						'month':  date.getMonth()+1,
+						'day': 	date.getDate()
 					});
 }	
 
@@ -94,26 +87,20 @@ function open_webcam(id, title) {
 
 	var url = '/api/webcams/id/'+id+'/';
 	$.getJSON(url, function(rez){
-		 
-				 console.log(rez);
-		 
-				 if (rez.status == 'Error') {
-					 $('#modalfade').hide();
-					 $('#msgPopup').hide();
-					 return;
-				 }
+				if (rez.status == 'Error') {
+					$('#modalfade').hide();
+					$('#msgPopup').hide();
+					return;
+				}
 
-				 var webcams = rez.info.webcams;
+				var webcams = rez.info.webcams;
 
-				 if (webcams && webcams.length>0) {
-
+				if (webcams && webcams.length>0) {
 					var url = webcams[0].player.month.embed;
-
 					$('#msgBody').empty();
-					h = '<iframe src="'+url+'" style="width: 100%; height: 100%"></iframe>';
+					var h = '<iframe src="'+url+'" style="width: 100%; height: 100%"></iframe>';
 					$('#msgBody').append($(h));
-				 }		 
-		  
+				}		 		  
 	});
 }	
 
@@ -136,7 +123,7 @@ function get_flightstats(params) {
 
 		$('#msgTitle').html('<span class="title-city-text">Departure to '+params.toAirport+'</span><span class="secondary">'+rez.date.weekday+', '+rez.date.mon+' '+rez.date.day+'</span>');
 
-		h = '<div class="flight-listing-container">'+
+		var h = '<div class="flight-listing-container">'+
 			'  <ul class="results-list" id="results-list">'+
 			'  </ul>'+
 			'</div>';
@@ -152,23 +139,23 @@ function get_flightstats(params) {
 			var d1 = new Date(flights[i].operationalTimes.publishedDeparture.dateLocal);
 			var d2 = new Date(flights[i].operationalTimes.publishedArrival.dateLocal);
 
-			h = '<li class="result-list-item">'+
-				'  <div class="grid-container">'+
-	            '    <div class="number-content">'+
-	            '       <span>'+flights[i].flightNumber+'</span>'+
-	            '    </div>'+
-	            '    <div class="time-content">'+
-	            '       <span>'+_time(d1)+'</span> - <span>'+_time(d2)+'</span>'+
-	            '    </div>'+
-				'    <div class="duration-content">'+
-	            '		<span>'+_duration(flights[i].flightDurations.scheduledBlockMinutes)+'</span>'+
-	            '    </div>'+
-				'    <div class="airline-content">'+
-	            '		<span>'+_airlines(flights[i].carrierFsCode, airlines)+'</span><br>'+
-	            '		<span>'+_equipments(flights[i].flightEquipment.actualEquipmentIataCode, equipments)+'</span>'+
-	            '    </div>'+
-				'  </div>'+
-				'</li>';
+			h = 	'<li class="result-list-item">'+
+					'  <div class="grid-container">'+
+					'    <div class="number-content">'+
+					'       <span>'+flights[i].flightNumber+'</span>'+
+					'    </div>'+
+					'    <div class="time-content">'+
+					'       <span>'+_time(d1)+'</span> - <span>'+_time(d2)+'</span>'+
+					'    </div>'+
+					'    <div class="duration-content">'+
+					'		<span>'+_duration(flights[i].flightDurations.scheduledBlockMinutes)+'</span>'+
+					'    </div>'+
+					'    <div class="airline-content">'+
+					'		<span>'+_airlines(flights[i].carrierFsCode, airlines)+'</span><br>'+
+					'		<span>'+_equipments(flights[i].flightEquipment.actualEquipmentIataCode, equipments)+'</span>'+
+					'    </div>'+
+					'  </div>'+
+					'</li>';
 
 			$('#results-list').append($(h));	
 		}	
@@ -194,13 +181,13 @@ function init_maps() {
 		size:   new google.maps.Size(20, 20),     	
 		origin: new google.maps.Point(0, 0),    	
 		anchor: new google.maps.Point(10, 10)		
-	  };
+	};
 	image_green = {
 		url: '/img/circle_green_24x24.png',
 		size:   new google.maps.Size(24, 24),     	
 		origin: new google.maps.Point(0, 0),    	
 		anchor: new google.maps.Point(12, 12)		
-	  };
+	};
 		
 	container = document.getElementById('map');
 
@@ -308,7 +295,7 @@ function init_maps() {
 		},
 		function(callback) {
 
-			show_cities( function(r){
+			show_cities( function(){
 				callback();
 			});
 
@@ -391,7 +378,7 @@ function show_city( city, callback ) {
 			cb();	
 		},
 				
-		function(cb) { 
+		function() { 
 
 			if (city.webcams && city.webcams.length>0) {
 
@@ -402,10 +389,8 @@ function show_city( city, callback ) {
 			callback();
 		}
 	]);
-
-
-
 }
+
 
 function set_map_webcams(coordinates, webcams, ps) {
 

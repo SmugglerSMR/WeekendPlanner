@@ -1,11 +1,9 @@
-var _ = require("underscore");
-
 // Setting up default configurations with hoistname, API keys for local/global
 var cfg = {
-	"local":{
-		HOST: "localhost",
-		PORT: "3000",
-		DEFAULT_COOKIES_DOMAIN: "",
+	'local':{
+		HOST: 'localhost',
+		PORT: '3000',
+		DEFAULT_COOKIES_DOMAIN: '',
 		FLIGHTSTATS: {
 			appId: '7f2f5bc3',
 			appKey: '5d403f57186fd4aa6376a661a48c7196'
@@ -15,10 +13,10 @@ var cfg = {
 		},
 		GOOGLE_MAPS_KEY: 'AIzaSyBXQROV5YMCERGIIuwxrmaZbBl_Wm4Dy5U'
 	},
-	"global":{
-		HOST: "",
-		PORT: "3000",
-		DEFAULT_COOKIES_DOMAIN: "cab432-sadykov-planner.com",
+	'global':{
+		HOST: '',
+		PORT: '3000',
+		DEFAULT_COOKIES_DOMAIN: 'cab432-sadykov-planner.com',
 		FLIGHTSTATS: {
 			appId: '7f2f5bc3',
 			appKey: '5d403f57186fd4aa6376a661a48c7196'
@@ -46,8 +44,8 @@ if( runEnv in cfg ){
 module.exports.extend = function(conf){
     function _extend(dest, source){
       for(var k in source){
-        if(typeof source[k] == "object" &&
-             typeof dest[k] == "object")
+        if(typeof source[k] == 'object' &&
+             typeof dest[k] == 'object')
           _extend(dest[k], source[k]);        
         else
           dest[k] = source[k];
@@ -58,7 +56,7 @@ module.exports.extend = function(conf){
 };
 
 module.exports._b = function ( v ) {
-	if( typeof v == "boolean" ) return v;
-	if( v == "true" ) return true;
+	if( typeof v == 'boolean' ) return v;
+	if( v == 'true' ) return true;
 	return false;
-}
+};

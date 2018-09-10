@@ -36,7 +36,7 @@ docker build -t weekends-pl .
 Next, run docker in order to acess it.
 Flags specify certain parameters: -p Port iner&outer. -d run as damonise.
 ```
-docker run --name Assignment11 -p 8000:3000 -i -d -t weekends-pl
+docker run --name Assignment1 -p 8000:3000 -i -d -t weekends-pl
 ```
 After just move to localhost:8000 to see folder.
 
@@ -51,12 +51,17 @@ Similar way to run in from DuckerHub strigh Forward.
 docker run --name Assignment1 -p 8000:3000 -i -d -t smugglersmr/weekends-pl
 ```
 
-Remaining work in progrss...
+## Connecting.
+Now, docker have to appear as daemon.
+Check it on following adress:
+```
+127.0.0.1:8000
+```
 
 ## Removing
 Container after start
 ```
-docker stop Assignment11
+docker stop Assignment1
 docker rm Assignment1
 ```
 Image after stopping everything
@@ -78,7 +83,7 @@ Run scripts (app.js):
 ```
 npm start
 ```
-Server is expected to be listed in: <localhost> : <8484>
+Server is expected to be listed in: <localhost> : <3000>
 ## Built With
 
 * [DockerHub](https://hub.docker.com/) - Official Docker Hub

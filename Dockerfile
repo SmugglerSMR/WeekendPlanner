@@ -10,7 +10,6 @@ dialog \
 git \
 mc \
 net-tools \
-npm \
 tar \
 vim \
 wget

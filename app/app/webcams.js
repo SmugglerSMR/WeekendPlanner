@@ -28,8 +28,7 @@ exports.get = function(params, callback) {
                 }
             };
 	
-    request( opts, function (error, response, body){
-		console.log('RESS:', response);
+    request( opts, function (error, response, body){		
         try {
             if (body.status == 'OK') {
                 callback(body.result);

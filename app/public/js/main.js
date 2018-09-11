@@ -629,7 +629,7 @@ function change_main_city() {
 	var bl = $('<div class="change-city-list"></div>');
 	$('#msgBody').empty().append(bl);
 	
-	var inp = $('<div class="change-city-item"><input type="radio" checked id="city_"'+info.main.name+'"" name="main-city" value="'+info.main.name+'"><label for="city_"'+info.main.name+'">'+info.main.name+'</label></div>')
+	var inp = $('<div class="change-city-item"><input type="radio" checked id="city_"'+info.main.name+'"" name="main-city" value="'+info.main.name+'"><label for="city_"'+info.main.name+'">'+info.main.name+'</label></div>');
 	bl.append(inp);
 
 	for (var j=0; j<info.cities.length; j++) {

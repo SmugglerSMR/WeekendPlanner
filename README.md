@@ -42,7 +42,7 @@ After just move to localhost:8000 to see folder.
 
 Following command will upload image to DockerHub
 ```
-docker tag 64202 smugglersmr/weekends-pl:latest
+docker tag weekends-pl smugglersmr/weekends-pl:latest
 docker push smugglersmr/weekends-pl
 ```
 

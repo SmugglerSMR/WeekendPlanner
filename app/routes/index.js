@@ -1,5 +1,5 @@
 var URL = require('url');
-var async = require('../app/async');
+var async = require('async');
 var config = require('../app/config');
 
 var Expedia = require( '../app/expedia' );
@@ -12,7 +12,12 @@ var CITY = [ 	{ name: 'sydney',   ps: 'right' },
 				{ name: 'darwin',   ps: 'top' },
 				{ name: 'adelaide',   ps: 'bottom' },
 				{ name: 'melbourne',   ps: 'bottom' },
-				{ name: 'perth',    ps: 'left' }
+				{ name: 'perth',    ps: 'left' },
+				{ name: 'geraldton',    ps: 'left' },
+				{ name: 'townsville',    ps: 'right' },
+				{ name: 'Hobart',    ps: 'bottom' },
+				{ name: 'Cairns',    ps: 'right' },
+				{ name: 'Alice Springs',    ps: 'top' }
 			];  
 
 

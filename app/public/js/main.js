@@ -1,3 +1,5 @@
+//var async = require('async');
+
 var info = null;
 var country = null;
 var center = {};
@@ -189,7 +191,7 @@ function init_maps() {
 		anchor: new google.maps.Point(12, 12)		
 	};
 		
-	container = document.getElementById('map');
+	container = document.getElementById('map');	
 
 	async.series([
 		function(callback) {

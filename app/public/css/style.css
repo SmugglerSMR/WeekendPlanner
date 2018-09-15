@@ -288,7 +288,8 @@
 	  height: 20px;
 	  border: 1px solid #333;
 	  border-radius: 2px;
-	  padding: 10px 15px;
+	  padding: 10px 15px;	  
+	  background: #ccc;
 	cursor: pointer;
   }
   .button-content span {

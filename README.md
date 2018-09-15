@@ -104,4 +104,4 @@ This project is licensed under the Eclipse License - see the [LICENSE.md](LICENS
 
 ## Acknowledgments
 
-* Farther who provided briliant ideas.
+* Farther who provided briliant ideas and some additional scripts.

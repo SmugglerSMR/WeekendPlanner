@@ -12,12 +12,8 @@ var CITY = [ 	{ name: 'sydney',   ps: 'right' },
 				{ name: 'darwin',   ps: 'top' },
 				{ name: 'adelaide',   ps: 'bottom' },
 				{ name: 'melbourne',   ps: 'bottom' },
-				{ name: 'perth',    ps: 'left' },
-				{ name: 'geraldton',    ps: 'left' },
-				{ name: 'townsville',    ps: 'right' },
-				{ name: 'Hobart',    ps: 'bottom' },
-				{ name: 'Cairns',    ps: 'right' },
-				{ name: 'Alice Springs',    ps: 'top' }
+				{ name: 'perth',    ps: 'left' },								
+				{ name: 'Cairns',    ps: 'right' }				
 			];  
 
 

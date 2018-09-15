@@ -7,7 +7,7 @@ var request = require('request');
 var fs = require('fs');
 
 var config = require('./app/config');
-var async = require( './app/async' ).async;
+var async = require( 'async' );
 
 var Expedia = require( './app/expedia' );
 var Flightstats = require( './app/flightstats' );

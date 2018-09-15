@@ -25,7 +25,8 @@
 \graphicspath{{./images}}
 \usepackage{hyperref}
 \usepackage{color}
-\usepackage{xcolor}
+
+\usepackage[table]{xcolor}% http://ctan.org/pkg/xcolor
 \hypersetup{colorlinks=true}
 \hypersetup{linkcolor=blue}
 \newcommand\PlaceText[3]{%
@@ -57,7 +58,7 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true}
 \hypersetup{linkcolor=blue}
-\usepackage{xcolor}
+
 \usepackage{physics}
 \usepackage{gensymb}
 \usepackage{mathrsfs}
@@ -75,7 +76,7 @@
 \usepackage{hyperref}
 \hypersetup{colorlinks=true}
 \hypersetup{linkcolor=blue}
-\usepackage{xcolor}
+
 \usepackage{physics}
 \usepackage{gensymb}
 
@@ -140,19 +141,19 @@
 %		\item List of service and data APIs to be utilised. Short description of API (1 paragraph)
 %	\end{enumerate} error made int
 
-	The aim of this project to provide users with some comfortable environment to plan their journeys. This planner will use one of the following API\footnote{Names contain hyperlinks to resource. Feel free to click}: 
-	
-	\begin{itemize}
-		\item \href{https://developers.google.com/maps/documentation/}{Google Maps}
-		\item \href{https://hackathon.expedia.com/docs/public/api/Flights Overview/}{Expedian} with \href{https://api.flightstats.com/flex/flightstatus/rest/v2/json/route/status/}{Flightstats} combined for one purpose.
-		\item \href{https://developers.webcams.travel/\#webcams/list}{Webcam}
-	\end{itemize}	
-	A user will be able to choose a destination, view closes and cheapest flight information and makes a decision based on a picture from realtime webcameras (Maybe it is not as pretty, but it will give right feeling regarding destination). First and the important part is an interactive map, provided by Maps services. It will allow a user to change view between satellite and geographic, zoom in to view details and help to extract geographic locations. Next is the webcam, which produces some images or short video streams on some of the sights of the area. And the Main part is quick information on the closest flight regarding price, time and journey. The first experiment version is presented in Figure~\ref{fig:map}.	
+		The aim of this project to provide users with some comfortable environment to plan their journeys. This planner will use one of the following API\footnote{Names contain hyperlinks to the resources. Feel free to click}: 
+		
+		\begin{itemize}
+			\item \href{https://developers.google.com/maps/documentation/}{Google Maps}
+			\item \href{https://hackathon.expedia.com/docs/public/api/Flights Overview/}{Expedian} with \href{https://api.flightstats.com/flex/flightstatus/rest/v2/json/route/status/}{Flightstats} combined for one purpose.
+			\item \href{https://developers.webcams.travel/\#webcams/list}{Webcam}
+		\end{itemize}    
+		A user will be able to choose a destination, view closes and cheapest flight information and makes a decision based on a picture from realtime webcameras (Maybe it is not as pretty, but it will give right feeling regarding destination). First and the important part is an interactive map, provided by Maps services. It will allow a user to change view between satellite and geographic, zoom in to view details and help to extract geographic locations. Next is the webcam, which produces some images or short video streams on some of the sights of the area. Moreover, the Main part is quick information on the closest flight regarding price, time and journey. The first experiment version located in the Appendix.    
 
-	\subsection{World Map}
+	\subsection{World Map}	
 		The foundation for weekend planer environment is continental Map. Gladly, there is a high chance of finding a right Map provider. Two global websites, whose work offers an API for use cases are Google Maps and Yandex. If first is the global giant, who existed in the worldwide market for a while, second has the most popularity in Russian. Both of them will serve the primary purpose very well: establish a right environment for integrating other API. Besides, both services provide an excellent API to extend the scope of the current project. \\
 		
-		As a result, the Google Map API was chosen with a way presented in Figure~\ref{fig:gmaps}. To describe location, a centre point of the map must be chosen with longitude and latitude. In addition, API provides a good drawing environment, which allows places some images on top of the map, draw markers or lines from one location, to another. As a scope of this unit, only Australia will be chosen as working environment.
+		As a result, the Google Map~\cite{noauthor_google_nodate} API provided a good environment, with a way presented in Figure~\ref{fig:gmaps}. To locate a particular area, the server has to receive a centre point of the map with longitude and latitude. Besides, API provides a good drawing environment, which allows places some images on top of the map, draw markers or lines from one location, to another. As a scope of this unit, a working environment will be stick to Australia.
 		
 		\begin{figure}[H]
 			\centering        
@@ -161,10 +162,10 @@
 			\label{fig:gmaps}
 		\end{figure}
 		
-	\subsection{Flight Management}
-		To gather information about the possible flight tickets, there is a possibility of some context particular problems. Since the beginning of the project, the request for API keys may take longer than expected. Such services like Expedia provides some flight information, which may be used to gather closest flight information about time, prices, airports. Obtaining this information may become a trickier process. For example, if there will be no alternatives discovered, the best solution in this situation will be parsing web page with flight information. However, this approach goes beyond the scope of the assignment, it may prove itself as a good, but not easy, alternative.\\
+	\subsection{Flight Management}	
+		In the process of gather information about the possible flight tickets, the project has potential problems, regards to context. Since the beginning of the project, the request for API keys may take longer than expected. Such services like Expedia~\cite{noauthor_expedia_nodate} provides some flight information, which may be used to gather closest flight information about time, prices, airports. Obtaining this information may become a trickier process. For example, if there will be no alternatives discovered, the best solution in this situation will be parsing web page with flight information. However, this approach goes beyond the scope of the assignment, and it may prove itself as a good, but not easy, alternative.\\
 		
-		As a result, plans were achieved using Flightstat API in combination with Expedia. In order to produce request which can be handled by flight API, there were need in creating request in particular form. In this situation, Expedia was able to provide certain returns based on name of the city, as an example, the code below represent two predefined messages for requests. In some situation, during development process, Expedia refused  to give response, that is why those predefined cities were created, to avoid error possibility and not interrupt user. Figure~\ref{fig:depar} provides an example of the flight from Main City\footnote{The one which user picked as starting point} to destination.
+		As a result, plans were achieved using Flightstat~\cite{noauthor_flightstats_nodate} API in combination with Expedia. In order to produce a request which can be handled by flight API, there was a need in creating a request in particular form. In this situation, Expedia was able to provide absolute returns based on the name of the city, as an example, the code below represents two predefined messages for requests. In some situation, during the development process, Expedia refused to give the response, that is why the code contains some predefined cities, to avoid error possibility and not interrupt the user. Figure~\ref{fig:depar} provides an example of the flight from Main City\footnote{The one which user picked as starting point} to the destination.
 		
 		\begin{lstlisting}
 			function def_(name) {
@@ -200,14 +201,13 @@
 			\label{fig:depar}
 		\end{figure}
 	\subsection{Location Explorer}
-		$  $ \\
-		
 		To gather information unusually and present in on top of maps webcam service will be used. Generally, it contains Library of open web cameras located around the world. Instead of gathering all possible sources, webcam includes all of them in one place. It will allow extracting at least images, which were made very recent to a user request. An example of how data can be collected is displayed in Figure~\ref{fig:webcam}. \\
 		
-		As a result of hard work with Webcams API, it was possible to integrate a real time video playtghrough, fresh within 5-15 minutes. In case if need, streams can be switched to Day, Month or Year in Timeleps. Video Players also includes information about provider, link for connection and script for embed, in addition to full screen view. Figure~\ref{fig:webCam-adel} refers to their view~\footnote{Nothing inspires more than eye dropping over someones life, or an entire city.}.
+		As a result of hard work with Webcams~\cite{noauthor_webcams.travel_nodate} API, it was possible to integrate a real-time video playthrough, fresh within 5-15 minutes. In case if need, streams can be switched to Day, Month or Year in a minute. Video Players also includes information about the provider, link for connection and script for embed, in addition to full-screen view. Figure~\ref{fig:webCam-adel} refers to their view~\footnote{Nothing inspires more than eye dropping over someone's life or an entire city.}.
+		
 		\begin{figure}[H]
 			\centering        
-			\includegraphics[width=0.7\textwidth]{images/webcam-adel}
+			\includegraphics[width=0.5\textwidth]{images/webcam-adel}
 			\caption{Departure flights from Brisbane to Perth.}
 			\label{fig:webCam-adel}
 		\end{figure}
@@ -219,7 +219,7 @@
 %===================================================%
 \section{Use Cases}
 	\subsection{Trip Planner}
-		The main expected advantage of this service is to \textbf{plan trips to several places} on one Map, instead of planning on the official website, comparing each ticket one by one. This comparison gives user possibility select option flexibally choose places and time.
+		The main expected advantage of this service is plan trips to another city on one Map, instead of planning on the official website, comparing each ticket one by one. This comparison gives user possibility select option flexibly, and choose several places and time.
 		
 		\begin{figure}[H]
 			\centering        
@@ -243,7 +243,7 @@
 			\caption{Choosing most efficient flight.}
 		\end{figure}
 	\subsection{Exploring area with cameras}
-		Web cameras spread around cities all other the place. Some of them may contain boring traffic exploration, another some beautiful views. Comparing to high-quality images on other services, webcam takes real-time shoots. The original intention is to allow the user to plan short weekend trips. \textbf{There is no better way to make decision rather take a small pick into a city of destination.}
+		Web cameras spread around cities all other the place. Some of them may contain tedious traffic exploration, another some beautiful views. Comparing to high-quality images on other services, webcam takes real-time shoots. The original intention is to allow the user to plan short weekend trips~\footnote{There is no better way to make a decision rather take a small pick into a city of destination.}.
 		\begin{figure}[H]
 			\centering        
 			\includegraphics[width=0.7\textwidth]{images/webcam}
@@ -268,7 +268,7 @@
 		\end{figure}
 	
 	\subsection{Exploring area with Google Maps}
-		The usage of Google Maps allowed change map view to the most suitable for user, as well as tossing virtual itself into any area on the map.
+		The usage of Google Maps allowed several map manipulations. One of them is changing overall map view to satellite. With zooming, the map gets added with extra details such as street names, or locations of interest, including shops, restaurants and more. Besides, Google provided a street view, which means a person can explore areas as a living virtual being. Some people may find this feature suitable for planning.
 		\begin{figure}[H]
 			\centering        
 			\includegraphics[width=0.7\textwidth]{images/map-toss}
@@ -276,87 +276,62 @@
 			\label{fig:toss}
 		\end{figure}
 	\subsection{Weekend planner}
-	In addition to flight management and camera exploration, some of \textbf{the Maps services} can be used to make decisions on sight. For example, explore the streets a destination in a particular city, without moving to another Map view. \\
-	In addition to this stage of the project, final goal after implementing the server side of the project is to allow the possibility of integration this web application into Linux GNOME Desktop environment. With this opportunity, the user will be free from the browser and will be able to make a decision during weekday workflow.
-	\begin{figure}[H]
-		\centering        
-		\includegraphics[width=0.7\textwidth]{images/map-explore}
-		\caption{Google satellite view on locations of interests.}
-		\label{fig:map-satel}
-	\end{figure}
-	
-	\begin{figure}[H]
-		\centering        
-		\includegraphics[width=0.7\textwidth]{images/map2}
-		\caption{First version of overview.}
-		\label{fig:map2}
-	\end{figure}
+		In addition to flight management and camera exploration, some \textbf{the Maps services} can be used to make decisions on sight. For example, explore the streets a destination in a particular city, without moving to another Map view. \\
+		In addition to this stage of the project, final goal after implementing the server side of the project is to allow the possibility of integration this web application into Linux GNOME Desktop environment. With this opportunity, the user will be free from the browser and will be able to decide weekday workflow. It will allow storing some information of the user on the computer, instead of some server login/password way.
+		\begin{figure}[H]
+			\centering        
+			\includegraphics[width=0.7\textwidth]{images/map-explore}
+			\caption{Google satellite view on locations of interests.}
+			\label{fig:map-satel}
+		\end{figure}	
 		
 %===================================================%
 %													%
 %============ Technical Breakdown===================%
 %												    %
 %===================================================%
-\newpage
 \section{Technical Breakdown}	
 %	\begin{enumerate}
 %		\item A clear division between Server, Client and Cloud.
 %		\item  a mock-up of your application page		
 %	\end{enumerate} 
-	The image below~\ref{fig:break} represents the first structure breakdown of the current project. Arrow indicates application communication on client site, then dot arrows indicate web request and response. The blue connection between API and cloud services are constant communication to provide service.
+	The image below~\ref{fig:break} represents the first and last structure breakdown of the current project. Arrow indicates application communication on client site, then dot arrows indicate web request and response. The blue connection between API and cloud services are constant communication to provide service.
 	\begin{figure}[H]
 		\centering		
 		\includegraphics[width=\textwidth]{images/Breakdown}
 		\caption{First structure Breakdown.}
 		\label{fig:break}
 	\end{figure}
-	Files Structure. \\
-	\begin{figure}[H]
-		\begin{subfigure}[b]{0.25\textwidth}
-			\centering
-			\includegraphics[width=\linewidth]{images/fl-1}
-			\caption{Choose from server.}
-			
-		\end{subfigure}
-		\begin{subfigure}[b]{0.25\textwidth}
-			\centering
-			\includegraphics[width=\linewidth]{images/fl-2}
-			\caption{Watch live stream.}
-			
-		\end{subfigure}
-		\caption{Webcam in Melbourne}
-	\end{figure}
+	
 		
 \newpage
 \section{Client}
-	Using only GET. Based only everything with Map. Passing all videos, and mnarking places. Then asking for flight, using click. After requesting specific city, GET post send to server and server makes response to Flight. Basically, public folder responsible for client side. \\
-	Client also uses async for speeding up process of requsting cities	\\
-	Google Overlay functions for implementations/	 \\
+%	Using only GET. Based only everything with Map. Passing all videos, and mnarking places. Then asking for flight, using click. After requesting specific city, GET post send to server and server makes response to Flight. Basically, public folder responsible for client side. \\
+%	Client also uses async for speeding up process of requsting cities	\\
+%	Google Overlay functions for implementations/	 \\
 	
-	At the loading page stage, client is come up with Google Loaded Map, with predefined cities and their airoports. Firts initial tivaling loication is set to Brisbane. In addition, user is provided with first images from webcam, from which it is possible to view full video. Those templates are build using Embeded JavaScript (.ejs) located in views directory. Also, similar window was created for error message. After picking locations on the map, they will be handeled by Jquery and processed on server side. To process each city to extract information about airoports locations a way of sending asynchronic requests was used. It allowed to speed up process of drawing web page. \\
+	At the loading page stage, a client is come up with Google Loaded Map, with predefined cities and their airports. First initial travelling location preallocated as Brisbane. Also, the user gets provided with the first images from the webcam, from which it is possible to view the full video. They get linked to dot markers of the cities in Australia. Those templates are build using Embedded JavaScript (.ejs) located in views directory. Besides, the similar window is applied for error message. After picking locations on the map, they get handled by JQuery and processed on the server side.
+	To process each city to extract information about airports locations a way of sending asynchronous requests was used~\cite{mcmahon_async_2018}. It allowed to speed up the process of drawing the web page. \\
 	
-	After choosing a location to get flights from, client will send location of choise to server and server will form proper request to flights management and return in proper view. Closest available flights within a day will be displayed. User is also able to change main city of departure, to any other with radio buttons. \\
+	After choosing a location to get flights from, the client will send the location of choice to server and server will form a proper request to flights management and return in proper view. Closest available flights within a day will be displayed. The user is also able to change the central city of departure, to any other with radio buttons. \\
 	
-	As soon as user click any any buttons which shows a pop window, an another another fading lauyot to keep out of interaction with everything else.
+	As soon as the user click any buttons which shows a pop window, another fading layout to keep out of interaction with everything else.
 	
-	All request are send using GET requests, this way it is better to focus all effor on server side and keep client out of complicated code\footnote{Except async.js - I found no better way to approach it.}
+	All request are send using GET requests, this way it is better to focus all effort on the server side and keep the client out of complicated code\footnote{Except async.js - I found no better way to approach it.}
 \section{Server}
-	Server processes requests from client, and provides first map page, and additional information per request. During processing, a loading screen appears.
+	Server processes requests from the client, provides a first map page, and additional information per request. It also sends 404 page, if for some reason Map gets unavailable. In addition to error messages, if the server is in the process for extracting information, the user receives loading screen. As prior of tests, loading did not take longer than 3 seconds. \\    
 	
-	Responses from API comes in required manner. \\
-    No Response Filtering \\
-	Everything comes depending response, and printed as per requested, based on result of send. \\
-	File architecture in project. App contains API used for requests. Views - pages for drawing. Public - A view for browser with JQuery and css files. \\
+	Server process requests from a user by adapting them into proper one to send with API posts. Upon their feedback, they are brought to visible form and presented on the client side. Regarding the flights - this strategy works well. However, video feedback from webcam gets processed much similarly. Instead of downloading a video to the server and showing to a user, the client receives a link to video stream straight from webcam and plays inside the browser. Such an approach removes need in filtering callbacks, does not store unnecessary unused information and saves the user from loading time. \\
+	All API information, the configuration for the server, API requests for each service and their keys get stored inside the app folder. Upon need, they get called from js files. This way the user will not be able to get access to some private server information. \\
+	File architecture in the project presented below. The app folder contains API used for requests, Views - pages for drawing and Public - A view for a browser with JQuery and CSS files. \\
 	
-	Server process requests from a user by adapting them into proper one to send with API posts. Upon their feedback their brought to visible form and presented to a user. In terms of the flights - this strategy works well. However, a video feeback from webcam get processed much simpilarly. Instead of donwloading video to server and showing to user, client receive a link to video stream stright from webcam and plays inside browser. \\
-	All API information, configureation for server, API requests for each service and their keys are stored inside app folder. Upon need, they get called from js files. THis way user will not be able to get access to some private server information.
 \section{Docker}
-	All instructions how to use Docker file were provided in the README file with the application and report.\\
-	Generally, Docker container is used for simple deployment of the project any one server based machine. For sake of time for building, container was uploaded to DockerHub repositroyu. In order to donload it and deploy, following command is enough~\footnote{Nickname of the user has nothing personal. Another simple way to remeber logins combined with the past.}:
+	All instructions how to use Docker file attached in the README.md file with the application and report.\\
+	Generally, Docker container used for simple deployment of the project any type server based machine. For the sake of time for building, the container gets uploaded to DockerHub repository. In order to download and deploy it, following command is enough~\footnote{Nickname of the user has nothing personal. Another simple way to remember logins combined with the past.}: \\
 	\begin{lstlisting}[language=bash]
 	docker run --name Assignment1 -p 8000:3000 -i -d -t smugglersmr/weekends-pl
 	\end{lstlisting}
-	Docker build file uses a node v8 as a base groud for project. After installing additional application are going to be installed to simplify debugging process. After moving all files, main port 80 going to be exposed for connection. After it, every request addressed to port 8000 will be realocated  to docker container. After running image there is no need for additional commands to start.
+	Docker build file uses a node v8 as a base ground for the project. After installing additional application are going to be installed to simplify the debugging process. After moving all files, main port 80 going to be exposed for connection. After it, every request addressed to port 8000 will be reallocated to Docker container. After running image, there is no need for additional commands to start.\\
 	\begin{lstlisting}[language=Python]
 	# Set initial image to ubuntu
 	FROM node:8
@@ -386,59 +361,108 @@
 	RUN npm install
 	CMD [ "npm", "start" ]	
 	\end{lstlisting}
-%\section{Design}
-%	Design based on one of a examples, drawen by ourself, which prints results on the screen.
-%	
-%	A pallete behind poped windows a way to restrict user from accendental unnecosary click.
 
 \section{Difficulties}
-	Switch between satellite and geographic considered ti be useless. \\
-	Processing went slow, so aditional script from async was used to process connections.
-	\subsection{More API than necessary}
-		Design followed minimalistic approach., without feeding too much information to a user. Markers are sticked to map with coordinates conversion to long and latitude, button exists as another div object. \\
-	\subsection{Asynchronic request}
+%	Switch between satellite and geographic considered ti be useless. \\
+%	Processing went slow, so aditional script from async was used to process connections. \\
+%	Some bugs were adressed differently, with small delais and pauses during the run.
+	
+	This section is much harder to write than it appears, and the reason behind it is apparent. At first, you are trying to approach the difficult problem, and when you are finding solutions and it works, you starting questions yourself what was so difficult in the first place. \\
+	
+	For particularly this king of Cloud Computing I found it challenging to convert coordinates into latitude and longitude to apply them for Map. And certain problems with it.  Most of the time I used projects which were already created, this one was the first which I developed from nothing. Maybe it could be helpful to use better templates like a pug, but I learned about it too late. API like Maps had some issues with the building, which was hard to debug. As a result, the solution behind it was adding a small time delay. Those kinds of problems not easy to approach when you can't form a proper request to Uncle Google for a solution. \\
+	I interfered with a problem passing certain information from one file to another. Understanding the logic which deriving yourself brings a new perspective for the code approach. \\
+	
+	Getting a price list from flights API was not an easy task, none had a will to share this opportunity freely. It could be another useful implementation to allow a user to buy those tickets or calculate prices on the way. In combinations of hotels, journey planner and other useful API, this project could become a far exciting practice that I planned initially.
+	
+%	\subsection{More API than necessary}
+%		Design followed minimalistic approach., without feeding too much information to a user. Markers are sticked to map with coordinates conversion to long and latitude, button exists as another div object. \\
+%	\subsection{Asynchronic request}
 \section{Future work}
 	\subsection{Gnome Integration}
-		Idea to use Gnome integration considered to be irelevant as no additional marks are going to be provided for trials. However the idea and desire still remain, there is still a hope for future projects.
-	\subsection{Several Extra APIs}
-		Adding a cost was not an easy tasks as it required an additional API search. An extra API was already used to get information about cities. There will be no additional add.
+		The idea to use Gnome integration considered to be irrelevant as no additional marks are going to be provided for trials. However the idea and desire still remain, there is still a hope for future projects. \\
+		This could be another experience with Linux programming. Gnome on Linux is a GUI desktop environment, which supports different kinds of extensions. One of then is OpenWeather. The idea was to design a similar extension to use in Gnome environment, then there will be no use in Web Browser. All operation could be performed in a startup environment. Those extensions not protected from bugs and crashes, but it definitely will be an experience.
+%	\subsection{Several Extra APIs}
+%		Adding a cost was not an easy tasks as it required an additional API search. An extra API was already used to get information about cities. There will be no additional add.
 	\subsection{More features}
-		Flight tickets ordering, cost calculation, information storage.
+%		Flight tickets ordering, cost calculation, information storage. \\
+		Some additional options such as the ability to order those tickets, reliable saving information in the Computer memory with Gnome Extension, not in some web server. Besides, adding map explorer with some good locations of interests, hotel, food and journal for travels. Those options could make this extension much useful and attract more interest around people. Also, it could become more practical regarding usage.
 
 \section{Tests}	
 	\begin{tabularx}{\textwidth}{X|l|l}
 		\textbf{Task} & \textbf{Outcome} & Result \\
 		\hline
-		Error screen & ATFD is more than a few & \\
+		Error screen & error.ejs applied & \cellcolor{green!25}DONE\\
 		\hline
-		Build Map with cities & ATFD is more than a few & \\
+		Build Map with cities & Google Maps Overlay & \cellcolor{green!25}DONE\\
 		\hline
-		Cities choosing & ATFD is more than a few & \\
+		Cities choosing & Array with cities and markers & \cellcolor{green!25}DONE\\
 		\hline
-		Arrange flights & WMC is high & \\
+		Arrange flights & Expedian in combination with Flightstat & \cellcolor{green!25}DONE\\
 		\hline
-		Set cameras around cities & TCC is low & \\
+		Set cameras around cities & Webcames produces video stream & \cellcolor{green!25}DONE\\
 		\hline
-		Set Restrictions from user & TCC is low & \\
+		Set Restrictions from user & Server/Client approach & \cellcolor{green!25}DONE\\
 		\hline
-		Safety measures for API falling & TCC is low & \\
+		Safety measures for API falling & Predefined cities. No Video storage. & \cellcolor{green!10}Sort Of\\
 		\hline
-		Asynchronic requests handeling & TCC is low & \\
+		Asynchronic requests handeling & async.js integrated & \cellcolor{green!25}DONE\\
 		\hline
-		Docker establishement & TCC is low & \\
+		Docker establishment & Dockerfile initialised & \cellcolor{green!25}DONE\\
 		\hline
-		GitHub and DockerHub & TCC is low & \\
+		Usage of the Docker container & Container creted and stored in Hub & \cellcolor{green!25}DONE\\
+		\hline		
+		GitHub and DockerHub & Both created as safety measure & \cellcolor{green!25}DONE\\
 		\hline
-		Latex Proposal and Report & TCC is low & \\
+		Latex Proposal and Report & Proposal and Report complete & \cellcolor{green!25}DONE\\
 		\hline
 	\end{tabularx}
-	
+	 \\ \\
+	An example of test written for getting information from API is provided below.
+	\begin{figure}[H]
+		\centering		
+		\includegraphics[width=0.8\textwidth]{images/test-term}
+		\caption{First test implementation.}
+		
+	\end{figure}
+%===================================================%
+%													%
+%============Bibliography and refferencing==========%
+%												    %
+%===================================================%
+\begin{flushleft}
+	\bibliographystyle{apacite}
+	\bibliography{referencing/referenceList}
+\end{flushleft}
+
 \section{Appendix}	
 	\begin{figure}[H]
 		\centering		
 		\includegraphics[width=0.8\textwidth]{images/map}
 		\caption{First test implementation.}
+		
 	\end{figure}
+	
+	\begin{figure}[H]
+		\centering        
+		\includegraphics[width=0.7\textwidth]{images/map2}
+		\caption{First version of overview.}
+		\label{fig:map2}
+	\end{figure}
+	
+	\begin{figure}[H]
+		\begin{subfigure}[b]{0.25\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{images/fl-1}
+			\caption{First part.}			
+		\end{subfigure}
+		\begin{subfigure}[b]{0.25\textwidth}
+			\centering
+			\includegraphics[width=\linewidth]{images/fl-2}
+			\caption{Second part.}			
+		\end{subfigure}
+		\caption{File structure}
+	\end{figure}
+
 	\begin{figure}[H]
 		\centering		
 		\includegraphics[width=0.8\textwidth]{images/Append-1}
@@ -460,16 +484,5 @@
 		\includegraphics[width=0.8\textwidth]{images/Append-4}
 		\caption{First test implementation.}
 	\end{figure}
-
-
-%===================================================%
-%													%
-%============Bibliography and refferencing==========%
-%												    %
-%===================================================%
-\begin{flushleft}
-	\bibliographystyle{apacite}
-	\bibliography{referencing/referenceList}
-\end{flushleft}
 
 \end{document}

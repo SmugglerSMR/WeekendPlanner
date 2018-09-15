@@ -7,16 +7,13 @@
 \contentsline {subsection}{\numberline {2.2.}Exploring area with cameras}{6}{subsection.2.2}
 \contentsline {subsection}{\numberline {2.3.}Exploring area with Google Maps}{7}{subsection.2.3}
 \contentsline {subsection}{\numberline {2.4.}Weekend planner}{8}{subsection.2.4}
-\contentsline {section}{\numberline {3}Technical Breakdown}{10}{section.3}
-\contentsline {section}{\numberline {4}Client}{11}{section.4}
-\contentsline {section}{\numberline {5}Server}{11}{section.5}
-\contentsline {section}{\numberline {6}Docker}{12}{section.6}
-\contentsline {section}{\numberline {7}Difficulties}{12}{section.7}
-\contentsline {subsection}{\numberline {7.1.}More API than necessary}{13}{subsection.7.1}
-\contentsline {subsection}{\numberline {7.2.}Asynchronic request}{13}{subsection.7.2}
-\contentsline {section}{\numberline {8}Future work}{13}{section.8}
-\contentsline {subsection}{\numberline {8.1.}Gnome Integration}{13}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2.}Several Extra APIs}{13}{subsection.8.2}
-\contentsline {subsection}{\numberline {8.3.}More features}{13}{subsection.8.3}
+\contentsline {section}{\numberline {3}Technical Breakdown}{9}{section.3}
+\contentsline {section}{\numberline {4}Client}{10}{section.4}
+\contentsline {section}{\numberline {5}Server}{10}{section.5}
+\contentsline {section}{\numberline {6}Docker}{11}{section.6}
+\contentsline {section}{\numberline {7}Difficulties}{11}{section.7}
+\contentsline {section}{\numberline {8}Future work}{12}{section.8}
+\contentsline {subsection}{\numberline {8.1.}Gnome Integration}{12}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2.}More features}{12}{subsection.8.2}
 \contentsline {section}{\numberline {9}Tests}{13}{section.9}
 \contentsline {section}{\numberline {10}Appendix}{14}{section.10}

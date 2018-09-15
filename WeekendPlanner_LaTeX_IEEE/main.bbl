@@ -1,3 +1,100 @@
 \begin{thebibliography}{}
 
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {Expedia {API} {Documentation}}}{%
+\APACcitebtitle {Expedia {API} {Documentation}}}{%
+{\protect \APACyear {2018}}%
+}]{%
+noauthor_expedia_nodate}
+\APACinsertmetastar {%
+noauthor_expedia_nodate}%
+\APACrefbtitle {Expedia {API} {Documentation}.} {Expedia {API}
+  {Documentation}.}
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+\begin{APACrefURL}
+  [{2018-09-15}]\url{https://hackathon.expedia.com/docs/public/api/Flights%20Overview/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {{FlightStats} {Developer} {Center} {Home}}}{%
+\APACcitebtitle {{FlightStats} {Developer} {Center} {Home}}}{%
+{\protect \APACyear {2018}}%
+}]{%
+noauthor_flightstats_nodate}
+\APACinsertmetastar {%
+noauthor_flightstats_nodate}%
+\APACrefbtitle {{FlightStats} {Developer} {Center} {Home}.} {{FlightStats}
+  {Developer} {Center} {Home}.}
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+\begin{APACrefURL} [{2018-09-15}]\url{https://developer.flightstats.com/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {Google {Maps} {Platform}}}{%
+\APACcitebtitle {Google {Maps} {Platform}}}{%
+{\protect \APACyear {2018}}%
+}]{%
+noauthor_google_nodate}
+\APACinsertmetastar {%
+noauthor_google_nodate}%
+\APACrefbtitle {Google {Maps} {Platform}.} {Google {Maps} {Platform}.}
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+\begin{APACrefURL}
+  [{2018-09-15}]\url{https://developers.google.com/maps/documentation/}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+McMahon%
+}{%
+McMahon%
+}{%
+{\protect \APACyear {2018}}%
+}]{%
+mcmahon_async_2018}
+\APACinsertmetastar {%
+mcmahon_async_2018}%
+\begin{APACrefauthors}%
+McMahon, C.%
+\end{APACrefauthors}%
+\unskip\
+\newblock
+\APACrefYearMonthDay{2018}{{\APACmonth{09}}}{}.
+\newblock
+\APACrefbtitle {Async utilities for node and the browser. {Contribute} to
+  caolan/async development by creating an account on {GitHub}.} {Async
+  utilities for node and the browser. {Contribute} to caolan/async development
+  by creating an account on {GitHub}.}
+\newblock
+\begin{APACrefURL} [{2018-09-15}]\url{https://github.com/caolan/async}
+  \end{APACrefURL}
+\newblock
+\APACrefnote{original-date: 2010-06-01T21:01:30Z}
+\PrintBackRefs{\CurrentBib}
+
+\bibitem [\protect \citeauthoryear {%
+\APACcitebtitle {webcams.travel {API}}}{%
+\APACcitebtitle {webcams.travel {API}}}{%
+{\protect \APACyear {2018}}%
+}]{%
+noauthor_webcams.travel_nodate}
+\APACinsertmetastar {%
+noauthor_webcams.travel_nodate}%
+\APACrefbtitle {webcams.travel {API}.} {webcams.travel {API}.}
+\newblock
+\APACrefYearMonthDay{2018}{}{}.
+\newblock
+\begin{APACrefURL}
+  [{2018-09-15}]\url{https://developers.webcams.travel/#webcams/list}
+  \end{APACrefURL}
+\PrintBackRefs{\CurrentBib}
+
 \end{thebibliography}

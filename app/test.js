@@ -18,9 +18,9 @@ var Webcams = require( './app/webcams' );
 console.log('-------test------------');
 
 
-//Expedia.typeahead( 'brisabane', function(rez){  console.log(rez);  });
+Expedia.typeahead( 'brisabane', function(rez){  console.log(rez);  });
 
-/*Flightstats.get({  'action':           'routes',
+Flightstats.get({  'action':           'routes',
                    'departureAirport': 'BNE',
                    'arrivalAirport':   'DXB',
                    'year':             2018,
@@ -28,15 +28,15 @@ console.log('-------test------------');
                    'day':              26
           }, function(rez){
               console.log(rez);
-          });*/
+          });
 
-/*Webcams.get({  //nearby:  '-27.45,153.10,15',
+Webcams.get({  //nearby:  '-27.45,153.10,15',
                 country: 'AU',
                 show:    'webcams:image,location'
 
               }, function(rez){
                   console.log(rez);
-              });*/
+              });
 
 Webcams.get({   webcamId:  '1216143079',
                 show:    'webcams:player,location'
@@ -46,21 +46,17 @@ Webcams.get({   webcamId:  '1216143079',
               });
               
 
-/*OTT.get({ from: 'BNE',
-          to:   'DXB',
-          day: 1,
-          month: 9
-        }, function(rez){
-  console.log(rez);
-})              
-*/
+// OTT.get({ from: 'BNE',
+//           to:   'DXB',
+//           day: 1,
+//           month: 9
+//         }, function(rez){
+//   console.log(rez);
+// })              
+
 
 // ============================================================
-function test_onetwotrip(params, callback) {
-
-
-
-
-}
+// function test_onetwotrip(params, callback) {
+// }
 
 

@@ -1,5 +1,12 @@
-//var async = require('async');
+/*!
+ * main.js
+ * File containing main building functions.
+ * All secondary functions were moved to utils.js
+ * Overlay constructiing functions stored in Overlay.js  
+ * 
+ */
 
+// Initializing variables
 var info = null;
 var country = null;
 var center = {};
@@ -10,6 +17,7 @@ var elemOverlays = [];
 var map, geocoder, container;
 var image_red, image_green;
 
+// Seting up Map
 google.maps.event.addDomListener(window, 'load', init_maps);
 
 USGSOverlay.prototype = new google.maps.OverlayView();
@@ -28,35 +36,7 @@ $(document).ready(function(){
 });
 
 // ----------------------------------------------
-function _time(d) {
-	var h = d.getHours();
-	var m = d.getMinutes();
-	return (h<10 ? '0'+h.toString() : h.toString()) + ':' + (m<10 ? '0'+m.toString() : m.toString());
-}	
-// ----------------------------------------------
-function _duration(d) {
-	var h = parseInt(d / 60);
-	var m = d % 60;
-	return (h>0 ? h.toString()+'h' : '') + (m>0 ? m.toString()+'m' : '');
-}	
-// ----------------------------------------------
-function _airlines(fs, airlines) {
-	for (var j=0; j<airlines.length; j++) {
-		if (airlines[j].fs == fs) return airlines[j].name;
-	}
-	return fs;
-}	
-// ----------------------------------------------
-function _equipments(iata, equipments) {
-	for (var j=0; j<equipments.length; j++) {
-		if (equipments[j].iata == iata) return equipments[j].name;
-	}
-	return iata;
-}	
-// ----------------------------------------------
-function  DeCode( date ){
-    return unescape(date);
-}
+// Open a city and arranges flight using get_flightstats
 // ----------------------------------------------
 function open_city(airport) {
 
@@ -79,6 +59,8 @@ function open_city(airport) {
 }	
 
 // ---------------------------------------------- 
+// Opens webcam player with WebCam API
+// ----------------------------------------------
 function open_webcam(id, title) {
 
 	$('#modalfade').show();
@@ -170,7 +152,12 @@ function get_flightstats(params) {
 
 
 
-//------------------// ------------     -------------
+// ---------------------------------------------- 
+// Initialises map with red and green circle markers
+// Perform async series to build all elements on map. 
+//    Main caller.
+// ----------------------------------------------
+
 function init_maps() {
 
 	if (config) {
@@ -194,6 +181,7 @@ function init_maps() {
 	container = document.getElementById('map');	
 
 	async.series([
+		// 
 		function(callback) {
 			geocoder.geocode( { 'address': info.main.lastSearchName}, function(results, status) {		
 
@@ -223,6 +211,7 @@ function init_maps() {
 				}	
 			});
 		},
+		// Setting center of Map uin Australia
 		function(callback) { 
 		
 			geocoder.geocode( { 'address': country}, function(results, status) {		
@@ -238,6 +227,7 @@ function init_maps() {
 			});			
 		
 		},
+		// Build city markers with coords
 		function(callback) { 
 
 			console.log(center);
@@ -284,7 +274,8 @@ function init_maps() {
 			setTimeout( function() {
 				callback();
 			}, 500);	
-		},	
+		},
+		// Used to change city of departure
 		function(callback){
 		
 			document.getElementById('button-change').addEventListener('click', function(event) {
@@ -293,7 +284,8 @@ function init_maps() {
 
 			callback();
 
-		},		
+		},
+		// Calls Building Map		
 		function(callback) { 
 	
 			build_map();
@@ -302,7 +294,10 @@ function init_maps() {
 	
 	]);
 }	
-
+// ---------------------------------------------- 
+// Perform map building with series of async requests
+//    Marker/ City/ Webcam
+// ----------------------------------------------
 function build_map( callback ) {
 
 	async.series([
@@ -337,84 +332,10 @@ function build_map( callback ) {
 
 }	
 
-function show_cities( callback ) {
-
-	for (var j=0; j<info.cities.length; j++) {
-		info.cities[j].ind = j;
-	}
-
-	async.eachSeries(info.cities, show_city, callback);
-		
-}
-
-function show_city( city, callback ) {
-
-	console.log(city);
-
-	async.series([
-		function(cb) {
-	
-			geocoder.geocode( { 'address': city.lastSearchName}, function(results, status) {		
-
-				if (status == google.maps.GeocoderStatus.OK) {
-
-					var adrs =  results[0].address_components;
-					city.name = adrs[0].long_name;
-
-					city.lat = results[0].geometry.location.lat();
-					city.lng = results[0].geometry.location.lng();
-					city.geometry = results[0].geometry.location;
-
-					cb();
-				}	
-			});
-
-		},
-			
-		function(cb) { 
-
-			city.marker =  new google.maps.Marker({
-				position: city.geometry,
-				map: map,
-				icon: image_green,
-			});	
-
-			city.marker.addListener('click', function() {
-				open_city(city.airport);
-			});
-
-			cb();	
-		},
-			
-		function(cb) { 
-
-			var path = [	new google.maps.LatLng( info.main.lat, info.main.lng ), 
-							new google.maps.LatLng( city.lat, city.lng )
-						];
-
-			city.route = new google.maps.Polyline({
-					path: path, 
-					geodesic: true, 
-					map: map 
-				});				
-
-			cb();	
-		},
-				
-		function() { 
-
-			if (city.webcams && city.webcams.length>0) {
-
-				city.overlay = set_map_webcams(new google.maps.LatLng(city.lat, city.lng), city.webcams, city.ps);	
-
-			}	
-
-			callback();
-		}
-	]);
-}
-
-
+// ---------------------------------------------- 
+// Placing webcam windows around marker.
+//    top / bottom/ left / right
+// ----------------------------------------------
 function set_map_webcams(coordinates, webcams, ps) {
 
 	console.log('set_map_webcams', coordinates, webcams, ps);
@@ -463,27 +384,10 @@ function set_map_webcams(coordinates, webcams, ps) {
 	}	
 }	
 
-function pixelOffsetToLatLng(offsetx,offsety) {
-	var latlng = map.getCenter();
-	var scale = Math.pow(2, map.getZoom());
-	var nw = new google.maps.LatLng(
-		map.getBounds().getNorthEast().lat(),
-		map.getBounds().getSouthWest().lng()
-	);
-  
-	var worldCoordinateCenter = map.getProjection().fromLatLngToPoint(latlng);
-	var pixelOffset = new google.maps.Point((offsetx/scale) || 0,(offsety/scale) ||0);
-  
-	var worldCoordinateNewCenter = new google.maps.Point(
-		worldCoordinateCenter.x - pixelOffset.x,
-		worldCoordinateCenter.y + pixelOffset.y
-	);
-  
-	var latLngPosition = map.getProjection().fromPointToLatLng(worldCoordinateNewCenter);
-  
-	return latLngPosition;
-}
-
+// ---------------------------------------------- 
+// USGSOverlay constructor provided by Google API
+//    Support functions stored in overlay.js
+// ----------------------------------------------
 /** @constructor */
 function USGSOverlay(bounds, image, map) {
 	
@@ -500,181 +404,3 @@ function USGSOverlay(bounds, image, map) {
 	// Explicitly call setMap on this overlay
 	this.setMap(map);
 }
-
-/**
- * onAdd is called when the map's panes are ready and the overlay has been
- * added to the map.
- */
-USGSOverlay.prototype.onAdd = function() {
-	
-	var div = document.createElement('div');
-	div.style.border = 'solid';
-	div.style.borderWidth = '2px';
-	div.style.position = 'absolute';
-
-	// Create the img element and attach it to the div.
-	var img = document.createElement('img');
-	img.src = this.image_;
-	img.style.width = '100%';
-	img.style.height = '100%';
-	div.appendChild(img);
-
-	this.div_ = div;
-
-	// Add the element to the "overlayImage" pane.
-	var panes = this.getPanes();
-	panes.overlayImage.appendChild(this.div_);
-};
-
-USGSOverlay.prototype.draw = function() {
-
-	// Check image
-	if(this.image_ === null) {
-		var div = this.div_;
-		div.style.left = '-50%';
-		div.style.top = '-50%';
-		div.style.width = '150px';
-		div.style.height = '50px';
-		div.innerHTML='<div style="margin-top: 10px;">Change Main City.</div>';
-		
-		return;
-	} 	
-	// We use the south-west and north-east
-	// coordinates of the overlay to peg it to the correct position and size.
-	// To do this, we need to retrieve the projection from the overlay.
-	var overlayProjection = this.getProjection();
-
-	// Retrieve the south-west and north-east coordinates of this overlay
-	// in LatLngs and convert them to pixel coordinates.
-	// We'll use these coordinates to resize the div.
-	var sw = overlayProjection.fromLatLngToDivPixel(this.bounds_.getSouthWest());
-	var ne = overlayProjection.fromLatLngToDivPixel(this.bounds_.getNorthEast());
-
-	var left = Math.min(sw.x, ne.x);
-	var top = Math.min(sw.y, ne.y);
-	var width = Math.abs(sw.x - ne.x);
-	var height = Math.abs(sw.y - ne.y);
-
-	// Resize the image's div to fit the indicated dimensions.
-	var div = this.div_;
-	div.style.left = left.toString() + 'px';
-	div.style.top = top.toString() + 'px';
-	div.style.width = width.toString() + 'px';
-	div.style.height = height.toString() + 'px';
-};
-
-USGSOverlay.prototype.onRemove = function() {
-	this.div_.parentNode.removeChild(this.div_);
-};
-
-// Set the visibility to 'hidden' or 'visible'.
-USGSOverlay.prototype.hide = function() {
-	if (this.div_) {
-		// The visibility property must be a string enclosed in quotes.
-		this.div_.style.visibility = 'hidden';
-	}
-};
-
-USGSOverlay.prototype.show = function() {
-	if (this.div_) {
-		this.div_.style.visibility = 'visible';
-	}
-};
-
-USGSOverlay.prototype.toggle = function() {
-	if (this.div_) {
-		if (this.div_.style.visibility === 'hidden') {
-		this.show();
-		} else {
-		this.hide();
-		}
-	}
-};
-
-// Detach the map from the DOM via toggleDOM().
-// Note that if we later reattach the map, it will be visible again,
-// because the containing <div> is recreated in the overlay's onAdd() method.
-USGSOverlay.prototype.toggleDOM = function() {
-	if (this.getMap()) {
-		// Note: setMap(null) calls OverlayView.onRemove()
-		this.setMap(null);
-	} else {
-		this.setMap(this.map_);
-	}
-};
-
-function latLng2Point(latLng, map) {
-	var topRight = map.getProjection().fromLatLngToPoint(map.getBounds().getNorthEast());
-	var bottomLeft = map.getProjection().fromLatLngToPoint(map.getBounds().getSouthWest());
-	var scale = Math.pow(2, map.getZoom());
-	var worldPoint = map.getProjection().fromLatLngToPoint(latLng);
-	return new google.maps.Point((worldPoint.x - bottomLeft.x) * scale, (worldPoint.y - topRight.y) * scale);
-}  
-
-function point2LatLng(point, map) {
-	var topRight = map.getProjection().fromLatLngToPoint(map.getBounds().getNorthEast());
-	var bottomLeft = map.getProjection().fromLatLngToPoint(map.getBounds().getSouthWest());
-	var scale = Math.pow(2, map.getZoom());
-	var worldPoint = new google.maps.Point(point.x / scale + bottomLeft.x, point.y / scale + topRight.y);
-	return map.getProjection().fromPointToLatLng(worldPoint);
-}      
-
-
-// ---------------------------------------------- 
-function change_main_city() {
-
-	$('#modalfade').show();
-	$('#msgPopup').show();
-
-	$('#msgTitle').html('<span class="title-city-text">Change Main City</span></span>');
-
-	var bl = $('<div class="change-city-list"></div>');
-	$('#msgBody').empty().append(bl);
-	
-	var inp = $('<div class="change-city-item"><input type="radio" checked id="city_"'+info.main.name+'"" name="main-city" value="'+info.main.name+'"><label for="city_"'+info.main.name+'">'+info.main.name+'</label></div>');
-	bl.append(inp);
-
-	for (var j=0; j<info.cities.length; j++) {
-
-		inp = $('<div class="change-city-item"><input type="radio" id="city_"'+info.cities[j].name+' name="main-city" value="'+info.cities[j].name+'"><label for="city_"'+info.main.name+'">'+info.cities[j].name+'</label></div>');
-		bl.append(inp);
-	}
-
-	bl.append( $('<div class="change-city-button"><button id="submit-button" class="submit-button">Submit</button></div>') );
-
-	bl.find('#submit-button').bind('click', function(){
-
-		set_main_city( bl.find('input:checked').val() );
-
-	});
-
-}  
-
-// ---------------------------------------------- 
-function set_main_city(val) {
-
-	$('#modalfade').hide();
-	$('#msgPopup').hide();
-
-	info.main.marker.setMap(null);
-	for (var j=0; j<info.cities.length; j++) {
-		info.cities[j].marker.setMap(null);
-		info.cities[j].route.setMap(null);
-	}	
-
-	console.log('set_main_city', val);
-
-	var m = info.main;
-
-	for (var j=0; j<info.cities.length; j++) {
-		if (info.cities[j].name === val ) {
-			info.main = info.cities[j];
-			info.cities[j] = m;
-		}
-	}	
-
-	console.log(info);
-
-	build_map();
-
-}	

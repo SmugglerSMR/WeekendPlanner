@@ -44,3 +44,10 @@ app.get('/api/webcams/id/:id/', readApi.webcams_id );
 app.listen(port, function () {
     console.log('Express app listening at http://${host}:${port}/');
 });
+
+app.use(function(req, res){
+    res.status(404);
+    console.log('Not found URL: ',req.url);
+    res.send({ error: 'Not found' });
+    return;
+});

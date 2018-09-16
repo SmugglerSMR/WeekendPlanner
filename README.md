@@ -14,7 +14,9 @@ It requires to design a sophisticated mashup that draws upon a set of publicly  
 
 ## Getting Started
 
-Project based of Week2 and Week4 exercises. In also contain Docler commands and Latex Report. Working with Git and Latex is optional. But pain from using JavaScript - uncomparable.
+Project based of Week2 and Week4 exercises. In also contain Docker commands and Latex Report. Working with Git and Latex is optional. But pain from using JavaScript - uncomparable.
+
+Taking my words back. That was painful, but an experiance.
 
 ## Prerequisites
 
@@ -69,12 +71,12 @@ Image after stopping everything
 docker rmi weekends-pl
 ```
 ## Running Node Project:
-Optional reinitialise prohject.
+Optional reinitialise project.
 (optional) If we want to start project from the start
 ```
  (optional) npm init
 ```
-Perform dependancies reinstalation
+Perform dependencies reinstalation
 ```
 npm install
 ```
@@ -84,6 +86,12 @@ Run scripts (app.js):
 npm start
 ```
 Server is expected to be listed in: <localhost> : <3000>
+
+Run Test scripts (test.js):
+```
+npm test
+```
+
 ## Built With
 
 * [DockerHub](https://hub.docker.com/) - Official Docker Hub
@@ -104,4 +112,4 @@ This project is licensed under the Eclipse License - see the [LICENSE.md](LICENS
 
 ## Acknowledgments
 
-* Farther who provided briliant ideas and some additional scripts.
+* Farther who provided brilliant ideas and some additional scripts.

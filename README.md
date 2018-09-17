@@ -32,6 +32,11 @@ sudo add-apt-repository \
 sudo apt-get update
 sudo apt-get install docker-ce
 ```
+OR using one web sh script
+```
+sudo apt update
+sudo curl -fsSL https://get.docker.com | sh
+```
 ### Installing on Mac
 Download from following websites and go through Getting Started.
 ```
@@ -59,7 +64,7 @@ docker push smugglersmr/weekends-pl
 Similar way to run in from DuckerHub strigh Forward.
 ```
 docker login --username=smugglersmr --email=mattsadov@gmail.com
-docker run --name Assignment1 -p 8000:3000 -i -d -t smugglersmr/weekends-pl
+sudo docker run --name Assignment1 -p 8000:3000 -i -d -t smugglersmr/weekends-pl
 ```
 
 ## Connecting.
@@ -67,6 +72,10 @@ Now, docker have to appear as daemon.
 Check it on following adress:
 ```
 127.0.0.1:8000
+```
+or
+```
+sudo docker exec -it  Assignment1 /bin/bash
 ```
 
 ## Removing

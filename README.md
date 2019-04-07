@@ -1,20 +1,8 @@
-# CAB432 Assignment 1 - Weekend Planner
-
-This Assignment contain first assignment for CAB432. Submission date set to *Monday, September 17 2018* with Weight *50%* of Unit. Task is individual.
-
-It requires to design a sophisticated mashup that draws upon a set of publicly  vailable services.
-
-## Important Due Dates
-
-* **Week5 - Proposal** -  - *Monday, August 27th* - Send One Page to Jacob Marks *marksj@qut.edu.au*
-
-* **Week7 - Report Draft** -  - *Friday, September 7th* - A more progressed version of draft.
-
-* **Week9 - Final Submission** -  - *Monday, September 17th* - Completed report, code and tests, deployment and execution instructions.
+# Weekend Planner - QUT University Assignment
 
 ## Getting Started
 
-Project based of Week2 and Week4 exercises. In also contain Docker commands and Latex Report. Working with Git and Latex is optional. But pain from using JavaScript - uncomparable.
+Project based on Uni exercises exercises. In also contain Docker commands and Latex Report. Working with Git and Latex is optional. But pain from using JavaScript - uncomparable.
 
 Taking my words back. That was painful, but an experiance.
 

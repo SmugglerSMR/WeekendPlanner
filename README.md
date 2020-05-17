@@ -51,7 +51,7 @@ docker push smugglersmr/weekends-pl
 
 Similar way to run in from DuckerHub strigh Forward.
 ```
-docker login --username=smugglersmr --email=mattsadov@gmail.com
+docker login --username=smugglersmr --email=123@mail.ru
 sudo docker run --name Assignment1 -p 8000:3000 -i -d -t smugglersmr/weekends-pl
 ```
 

@@ -23,7 +23,7 @@
   },
   "homepage": "https://github.com/SmugglerSMR/CAB432-assgn1#readme",
   "dependencies": {
-    "async": "^2.6.1",
+    "async": "^2.6.4",
     "connect": "^3.6.6",
     "cookie-parser": "^1.4.3",
     "cookie-sessions": "0.0.2",
